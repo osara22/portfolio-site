@@ -18,14 +18,14 @@
 3Dモデリングを始めたての人
 
 ### 主な利用シーン
-初心者が何から始めていいかわからないと感じたとき、<br>
+初心者が何から始めていいかわからないと感じたとき<br>
 初心者の人が陥りがちな悩みを解決するのに使う
 
 ## 設計書
 <...>
 
 ## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
+https://docs.google.com/spreadsheets/d/14CsJhx5bvTOkeIpyNmPtHKnrk3Z3J2I4vLUPRLNEgic/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
