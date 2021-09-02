@@ -22,7 +22,11 @@
 初心者の人が陥りがちな悩みを解決するのに使う
 
 ## 設計書
-<...>
+- ER図
+- UIフロー
+- ワイヤーフレーム
+- テーブル定義書
+- アプリケーション詳細設計
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/14CsJhx5bvTOkeIpyNmPtHKnrk3Z3J2I4vLUPRLNEgic/edit?usp=sharing
