@@ -22,7 +22,7 @@
 初心者の人が陥りがちな悩みを解決するのに使う
 
 ## 設計書
-- ER図
+- [ER図作成中](https://drive.google.com/file/d/1gWoKV8tySktG5K9Caq9HRTsEksnhW9-_/view?usp=sharing)
 - UIフロー
 - ワイヤーフレーム
 - テーブル定義書
