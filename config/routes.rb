@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root to: 'public/homes#top'
-  
+
+  get 'admin' => 'admin/homes#top'
+
+  namespace :admin do
+    resources :blogs, only:[:index, :new, :create, :show, :edit, :update]
+  end
+
   # UserとAdminのログインページ
   devise_for :admins, controllers: {
     sessions: 'admin/sessions',
