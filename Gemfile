@@ -74,3 +74,7 @@ gem 'kaminari','~> 1.2.1'
 gem 'pry-byebug'
 # 環境変数
 gem 'dotenv-rails'
+# マークダウン形式で投稿・表示
+gem 'redcarpet', '~> 2.3.0'
+# シンタックスハイライト
+gem 'coderay'
