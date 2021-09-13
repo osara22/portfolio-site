@@ -1,0 +1,33 @@
+<h1>Adminのブログ投稿ページです</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @blog, url:admin_blogs_path, local:true do |f| %>
+        <table class="table">
+          <tbody>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :title, "ブログタイトル" %></td>
+              <td><%= f.text_field :title, size: 100, placeholder: "タイトル名" %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :top_image, "TOPイメージ" %></td>
+              <td><%= f.attachment_field :top_image %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :body, "ブログの内容" %></td>
+              <td><%= f.text_area :body, cols: 100, rows: 20, placeholder: "入力してください(マークダウン形式OK)" %></td>
+            </tr>
+             <tr class="mb-3">
+              <td class="text-center"><%= f.label :body_image, "BODYイメージ" %></td>
+              <td><%= f.attachment_field :body_image %></td>
+            </tr>
+            <tr>
+              <td><%= f.submit '新規登録', class: "btn btn-success mb-3" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

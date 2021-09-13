@@ -1,0 +1,12 @@
+<h1>Adminのブログ詳細</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <h1><%= @blog.title %></h1>
+      <%= attachment_image_tag @blog, :top_image, :fill, 800, 300, format: 'jpg' %>
+      <p><%= markdown(@blog.body) %></p>
+      <%= attachment_image_tag @blog, :body_image %>
+    </div>
+    <%= render 'layouts/sidebar' %>
+  </div>
+</div>
