@@ -5,6 +5,7 @@
       <h1><%= @blog.title %></h1>
       <%= attachment_image_tag @blog, :top_image, :fill, 800, 300, format: 'jpg' %>
       <p><%= markdown(@blog.body) %></p>
+      <%= render 'layouts/youtube', blog: @blog %>
       <%= attachment_image_tag @blog, :body_image %>
     </div>
     <%= render 'layouts/sidebar' %>
