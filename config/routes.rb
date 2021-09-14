@@ -9,13 +9,14 @@ Rails.application.routes.draw do
 
   # UserとAdminのログインページ
   devise_for :admins, controllers: {
-    sessions: 'admin/sessions',
-    passwords: 'admin/passwords',
-    registrations: 'admin/registrations'
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
   }
   devise_for :users, controllers: {
-    sessions: "public/sessions",
-    passwords: "public/passwords",
-    ragistrations: "public/registrations"
+    registrations: "publics/registrations",
+    sessions: "publics/sessions",
+    passwords: "publics/passwords",
+    ragistrations: "publics/registrations"
   }
 end
