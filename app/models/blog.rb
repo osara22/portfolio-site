@@ -4,6 +4,9 @@ class Blog < ApplicationRecord
 
   validates :title, :body, presence: true
 
+  # タグ機能の追加
+  acts_as_taggable
+
   # youtubeのURLのIDを抽出する
   def split_id_from_youtube_url
     url = video_url.gsub("=","/")

@@ -3,7 +3,15 @@ class Admin::BlogsController < ApplicationController
   before_action :admin_not_signin
 
   def index
-    @blogs = Blog.all
+    @tags = Blog.tag_counts_on(:tags)
+    @search_word = params[:search_word]
+    if params[:tag]
+      @blogs = Blog.tagged_with(params[:tag])
+    elsif params[:search_word]
+      @blogs = Blog.where("title Like ?", "%" + @search_word + "%")
+    else
+      @blogs = Blog.all
+    end
   end
 
   def new
@@ -21,6 +29,7 @@ class Admin::BlogsController < ApplicationController
 
   def show
     @blog = Blog.find(params[:id])
+    @tags = Blog.find(params[:id]).tag_counts_on(:tags)
   end
 
   def edit
@@ -40,7 +49,7 @@ class Admin::BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :body, :top_image, :body_image,:video_url)
+    params.require(:blog).permit(:title, :body, :top_image, :body_image, :video_url, :tag_list)
   end
 
 end

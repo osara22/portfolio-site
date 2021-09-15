@@ -78,3 +78,7 @@ gem 'dotenv-rails'
 gem 'redcarpet', '~> 2.3.0'
 # シンタックスハイライト
 gem 'coderay'
+# タグ機能
+gem 'acts-as-taggable-on', '~> 6.0'
+# JQury UI導入 Tag-itでUIをと整えるため
+gem 'jquery-ui-rails'
