@@ -46,3 +46,4 @@ https://docs.google.com/spreadsheets/d/14CsJhx5bvTOkeIpyNmPtHKnrk3Z3J2I4vLUPRLNE
 - 使用しない場合は、使用素材の項目をREADMEから削除してください。
 
 　ジャンル関係は明日追加
+　Tag_it 導入途中
