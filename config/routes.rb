@@ -3,8 +3,25 @@ Rails.application.routes.draw do
 
   get 'admin' => 'admin/homes#top'
 
+
   namespace :admin do
     resources :blogs, only:[:index, :new, :create, :show, :edit, :update]
+  end
+
+  scope module: :public do
+    resources :questions, only:[:index, :new, :create ,:show, :update] do
+      collection do
+        get 'unsolved'
+        get 'solved'
+        get 'my_question'
+        post 'check'
+      end
+
+      member do
+        get 'best_select' => 'questions#edit'
+      end
+
+    end
   end
 
   # UserとAdminのログインページ
