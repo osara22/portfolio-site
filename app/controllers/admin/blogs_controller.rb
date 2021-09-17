@@ -8,7 +8,7 @@ class Admin::BlogsController < ApplicationController
     if params[:tag]
       @blogs = Blog.tagged_with(params[:tag])
     elsif params[:search_word]
-      @blogs = Blog.where("title Like ?", "%" + @search_word + "%")
+      @blogs = Blog.where("name Like ?", "%" + @search_word + "%")
     else
       @blogs = Blog.all
     end
