@@ -37,4 +37,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+# 自分が作った記事に回答しようとしたときの処理
+  def current_user_signin
+    if current_user.id == Question.find(params[:id]).user_id
+      redirect_to root_path
+    end
+  end
 end

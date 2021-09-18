@@ -3,9 +3,26 @@
     <div class="col">
       <h1>UserのQ&A詳細</h1>
       <h1><%= @question.title %></h1>
+      <h3><%= @question.user.name %></h3>
       <p><%= simple_format(@question.body) %></p>
       <% if @question.image.present? %>
         <%= attachment_image_tag @question, :image, :fill, 400, 400, format: 'jpeg' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h1>Userの回答</h1>
+      <% unless @question.user_id == current_user.id %>
+        <%= link_to "回答する", new_answer_path(@question) , class: 'btn btn-light' %>
+      <% end %>
+      <% @question.answers.each do |answer| %>
+        <div class="row">
+          <div class="col">
+            <h3><%= answer.user.name %></h3>
+            <p><%= answer.body %></p>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

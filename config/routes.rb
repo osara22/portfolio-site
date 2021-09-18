@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
       member do
         get 'best_select' => 'questions#edit'
+        resources :answers, only:[:new, :create] do
+          post 'check'
+        end
       end
 
     end

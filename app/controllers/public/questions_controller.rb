@@ -1,4 +1,5 @@
 class Public::QuestionsController < ApplicationController
+  # ログインしてなければログインページににリダイレクトする
   before_action :user_not_signin, {except: [:index, :unsolved, :solved, :show]}
   def index
 
