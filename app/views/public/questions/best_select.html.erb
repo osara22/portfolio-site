@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h1>ベストアンサーを選ぶ</h1>
+      <%= form_with model: @question, url:question_path(@question), local:true do |f| %>
+        <table class="table">
+          <tbody>
+            <% @question.answers.each do |answer| %>
+              <tr>
+                <td><%= f.radio_button :best_answer_id, answer.id %></td>
+                <td>
+                  <%= f.label :best_answer_id, value: answer.id do %>
+                    <%= simple_format(answer.body) %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <div class="row">
+          <div class="col">
+            <h3><%= f.label :thank, "感謝文を入力する" %></h3>
+            <%= f.text_area :thank, cols: 100, rows: 5, placeholder: "入力してください" %>
+            <div>
+              <%= f.button '確認画面へ', type: 'button', onclick: 'submit();', class: "btn btn-success mb-3" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,8 @@ Rails.application.routes.draw do
       end
 
       member do
-        get 'best_select' => 'questions#edit'
+        # ベストアンサーを選ぶ画面
+        get 'best_select' => 'questions#best_select'
         resources :answers, only:[:new, :create] do
           post 'check'
         end

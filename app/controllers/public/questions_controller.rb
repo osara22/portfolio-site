@@ -10,11 +10,11 @@ class Public::QuestionsController < ApplicationController
   end
 
   def solved
-
+    @questions = Question.where.not(thank: nil)
   end
 
   def my_question
-
+    @questions = current_user.questions
   end
 
   def new
@@ -36,7 +36,12 @@ class Public::QuestionsController < ApplicationController
   end
 
   def update
-
+    @question = Question.find(params[:id])
+    if @question.update(best_answer_params)
+      redirect_to question_path(@question)
+    else
+      render :edit
+    end
   end
 
   def check
@@ -44,7 +49,7 @@ class Public::QuestionsController < ApplicationController
   end
 
   def best_select
-
+    @question = Question.find(params[:id])
   end
 
   # 投稿データのストロングパラメータ
@@ -52,5 +57,9 @@ class Public::QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit(:title, :body, :image)
+  end
+
+  def best_answer_params
+    params.require(:question).permit(:thank, :best_answer_id)
   end
 end
