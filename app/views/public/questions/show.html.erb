@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>UserのQ&A詳細</h1>
+      <% if user_signed_in? %>
+        <% if @question.user_id == current_user.id %>
+          <%= link_to "ベストアンサーを選ぶ", best_select_question_path(@question) , class: 'btn btn-light' %>
+        <% end %>
+      <% end %>
+      <h1><%= @question.title %></h1>
+      <%= render 'public/questions/user_data', data: @question %>
+      <p><%= simple_format(@question.body) %></p>
+      <% if @question.image.present? %>
+        <%= attachment_image_tag @question, :image, :fill, 400, 400, format: 'jpeg' %>
+      <% end %>
+    </div>
+  </div>
+  <% if @question.best_answer_id.present? %>
+    <div class="row">
+      <div class="col">
+        <h1>ベストアンサーに選ばれた回答</h1>
+        <%= render 'public/questions/user_data', data: @best_answer %>
+        <p><%= simple_format(@best_answer.body) %></p>
+        <div class="row">
+          <div class="col">
+            <h4><strong>質問者からの感謝コメント</strong></h4>
+            <p><%= simple_format(@question.thank) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col">
+      <h1>Userの回答</h1>
+      <% if user_signed_in? %>
+        <% unless @question.user_id == current_user.id %>
+          <%= link_to "回答する", new_answer_path(@question) , class: 'btn btn-light' %>
+        <% end %>
+      <% end %>
+      <% @question.answers.each do |answer| %>
+        <div class="row">
+          <div class="col">
+            <%= render 'public/questions/user_data', data: answer %>
+            <p><%= answer.body %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

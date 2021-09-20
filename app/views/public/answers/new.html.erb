@@ -1,0 +1,21 @@
+<h1>UserのQ&Aの回答投稿ページです</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @answer, url:answers_path, local:true do |f| %>
+        <table class="table">
+          <tbody>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :body, "回答の内容" %></td>
+              <td><%= f.text_area :body, cols: 100, rows: 20, placeholder: "入力してください" %></td>
+            </tr>
+            <tr>
+              <td><%= f.button '新規登録', type: 'button', onclick: 'submit();', class: "btn btn-success mt-3" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

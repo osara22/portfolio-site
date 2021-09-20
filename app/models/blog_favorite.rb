@@ -1,0 +1,2 @@
+class BlogFavorite < ApplicationRecord
+end

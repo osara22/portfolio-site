@@ -1,0 +1,41 @@
+<h1>Adminのブログ投稿ページです</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @blog, url:admin_blogs_path, local:true do |f| %>
+        <table class="table">
+          <tbody>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :title, "ブログタイトル" %></td>
+              <td><%= f.text_field :title, size: 100, placeholder: "タイトル名" %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :top_image, "TOPイメージ" %></td>
+              <td><%= f.attachment_field :top_image %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :body, "ブログの内容" %></td>
+              <td><%= f.text_area :body, cols: 100, rows: 20, placeholder: "入力してください(マークダウン形式OK)" %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :video_url, "youtube動画のURL" %></td>
+              <td><%= f.text_field :video_url, size: 100, placeholder: "(例)https://youtu.be/〇〇〇〇〇〇" %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :body_image, "BODYイメージ" %></td>
+              <td><%= f.attachment_field :body_image %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :tag_list %></td>
+              <td><%= f.text_field :tag_list, value: @blog.tag_list.join(','), placeholder: "( , )で区切ると複数タグを登録できます" %></td>
+            </tr>
+            <tr>
+              <td><%= f.button '新規登録', type: 'button', onclick: 'submit();', class: "btn btn-success mt-3" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

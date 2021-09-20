@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>投稿した問題一覧</h1>
+        <table class="table">
+          <tbody>
+            <% @questions.each do |question| %>
+              <tr>
+                <td><%= link_to question.title, question_path(question) %></td>
+                <td><%= question.body.truncate(20) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
