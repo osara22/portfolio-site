@@ -82,3 +82,8 @@ gem 'coderay'
 gem 'acts-as-taggable-on', '~> 6.0'
 # JQury UI導入 Tag-itでUIをと整えるため
 gem 'jquery-ui-rails'
+# MySQL
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
