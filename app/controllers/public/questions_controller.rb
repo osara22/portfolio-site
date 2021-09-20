@@ -33,6 +33,7 @@ class Public::QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @best_answer = @question.answers.find(@question.best_answer_id)
   end
 
   def update
