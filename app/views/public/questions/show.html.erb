@@ -8,7 +8,7 @@
         <% end %>
       <% end %>
       <h1><%= @question.title %></h1>
-      <h3><%= @question.user.name %></h3>
+      <%= render 'public/questions/user_data', data: @question %>
       <p><%= simple_format(@question.body) %></p>
       <% if @question.image.present? %>
         <%= attachment_image_tag @question, :image, :fill, 400, 400, format: 'jpeg' %>
@@ -19,20 +19,14 @@
     <div class="row">
       <div class="col">
         <h1>ベストアンサーに選ばれた回答</h1>
+        <%= render 'public/questions/user_data', data: @best_answer %>
+        <p><%= simple_format(@best_answer.body) %></p>
         <div class="row">
-          <div class="col-1">
-            <%= attachment_image_tag @best_answer.user, :user_image, :fill, 100, 100, format: 'jpeg', fallback:"sample_img.jpg", size: '50x50', class: 'rounded-circle' %>
-          </div>
-          <div class="col-8 pl-0">
-            <div class="post-date-list">
-              <ul>
-                <li>回答者 : <%= link_to @best_answer.user.name, root_path %> さん</li>
-                <li><%= @best_answer.created_at.strftime('%Y/%m/%d %H:%M') %></li>
-              </ul>
-            </div>
+          <div class="col">
+            <h4><strong>質問者からの感謝コメント</strong></h4>
+            <p><%= simple_format(@question.thank) %></p>
           </div>
         </div>
-        <p><%= simple_format(@best_answer.body) %></p>
       </div>
     </div>
   <% end %>
@@ -47,7 +41,7 @@
       <% @question.answers.each do |answer| %>
         <div class="row">
           <div class="col">
-            <h3><%= answer.user.name %></h3>
+            <%= render 'public/questions/user_data', data: answer %>
             <p><%= answer.body %></p>
           </div>
         </div>
