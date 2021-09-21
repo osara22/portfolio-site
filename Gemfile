@@ -84,6 +84,9 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'jquery-ui-rails'
 # MySQL
 gem 'dotenv-rails'
+
+gem 'sassc','~>2.1.0'
+
 group :production do
   gem 'mysql2'
 end
