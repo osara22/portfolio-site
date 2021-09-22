@@ -16,7 +16,6 @@ Rails.application.routes.draw do
         get 'my_question'
         post 'check'
       end
-
       member do
         # ベストアンサーを選ぶ画面
         get 'best_select' => 'questions#best_select'
@@ -24,8 +23,9 @@ Rails.application.routes.draw do
           post 'check'
         end
       end
-
     end
+
+    resources :blogs, only:[:index, :show]
   end
 
   # UserとAdminのログインページ
