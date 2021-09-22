@@ -15,30 +15,43 @@
 //= require popper
 //= require bootstrap-sprockets
 
+
+
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
 //= require tag-it
-//= require_tree .
+//= require flickity.pkgd.min
 
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
 
-// ページ更新でtag-it発火
-$(document).ready(function() {
-  $(".tag_form").tagit({  // 指定のセレクタ( 今回は、:tag_list の text_field )に、tag-itを反映
-    tagLimit:10,  // タグの最大数
-    singleField: true,  // タグの一意性
-  });
-  let tag_count = 10 - $(".tagit-choice").length  // タグの数を数える
-  $(".ui-widget-content.ui-autocomplete-input").attr(
-    'placeholder','あと' + tag_count + '個登録できます');
-})
+// topのスライドショーの設定
 
-// 残りタグ数を表示
-$(document).on("keyup", '.tagit', function() {
-  let tag_count = 10 - $(".tagit-choice").length
-  $(".ui-widget-content.ui-autocomplete-input").attr(
-  'placeholder','あと' + tag_count + '個登録できます');
+$(function(){
+  $('.js-flickity').flickity({
+
+    wrapAround: true,
+    //　無限スクロール
+
+    contain: true,
+    //　trueでラッパー要素の中で収まるようにスクロールする。falseではみ出た部分に余白ができる。デフォルトはfalse。(wrapAround: trueの場合は無視される)
+
+    rightToLeft: true,
+    // trueでスライドの始まりが右になる。デフォルトはfalse。
+
+    prevNextButtons: false,
+    // falseで「前へ」「次へ」のボタンの非表示。デフォルトはtrue。
+
+    pageDots: false,
+    // falseでドットナビゲーションを非表示。デフォルトはtrue。
+
+    reseze: false,
+    // falseでリサイズした時にサイズ変更しない。デフォルトはtrue。
+
+    autoPlay: true
+    // trueで3秒間隔で自動スクロール。秒数を指定したい場合は1500などミリ秒で指定する。デフォルトはfalse。
+
+  });
 });

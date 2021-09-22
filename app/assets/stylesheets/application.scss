@@ -17,8 +17,40 @@
 // レイアウトのためのTagit
 @import "jquery.tagit";
 @import "tagit.ui-zendesk";
+@import "flickity";
 
 .post-date-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery-cell {
+  width: 33.33%;
+  position: relative;
+}
+
+.gallery-cell p{
+  position: absolute;
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.7);
+  padding: 0;
+  margin: 0;
+}
+
+.slide-image {
+  width: 100%;
+}
+
+.slide-image:hover {
+  filter: opacity(70%);
+}
+
+.header-content ul {
   list-style: none;
   margin: 0;
   padding: 0;
