@@ -1,0 +1,12 @@
+<div class="header-content mb-4">
+  <ul class="js-flickity">
+    <% slide_blogs.each do |blog| %>
+      <li class="gallery-cell" id="gallery-cell-<%= blog.id %>">
+        <%= link_to blog_path(blog) do %>
+          <%= attachment_image_tag blog, :top_image, :fill, 600, 300, format: 'jpg', class: 'slide-image' %>
+          <p><%= blog.title.truncate(20) %></p>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

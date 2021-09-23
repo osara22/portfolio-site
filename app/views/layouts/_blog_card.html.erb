@@ -1,0 +1,17 @@
+<% blogs.each do |blog| %>
+<div class="col mb-3" id="blog-card-<%= blog.id %>">
+  <div class=" blog-card-image rounded">
+    <%= link_to blog_path(blog) do %>
+      <%= attachment_image_tag blog, :top_image, :fill, 600, 300, format: 'jpg', class: 'rounded', style: 'width: 100%' %>
+    <% end %>
+  </div>
+  <div class="blog-card-title">
+    <%= link_to blog_path(blog) do %>
+      <h3><%= blog.title %></h3>
+    <% end %>
+  </div>
+  <div>
+    <p class="text-secondary text-right"><%= blog.created_at.strftime('%Y-%m-%d') %></p>
+  </div>
+</div>
+<% end %>

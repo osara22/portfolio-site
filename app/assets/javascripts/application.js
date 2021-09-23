@@ -18,10 +18,10 @@
 
 
 //= require jquery
+//= require flickity.pkgd.min
 //= require jquery_ujs
 //= require jquery-ui
 //= require tag-it
-//= require flickity.pkgd.min
 
 //= require rails-ujs
 //= require activestorage
@@ -36,22 +36,19 @@ $(function(){
     //　無限スクロール
 
     contain: true,
-    //　trueでラッパー要素の中で収まるようにスクロールする。falseではみ出た部分に余白ができる。デフォルトはfalse。(wrapAround: trueの場合は無視される)
+    //　trueでラッパー要素の中で収まるようにスクロールする
 
     rightToLeft: true,
-    // trueでスライドの始まりが右になる。デフォルトはfalse。
+    // trueでスライドの始まりが右になる
 
     prevNextButtons: false,
-    // falseで「前へ」「次へ」のボタンの非表示。デフォルトはtrue。
+    // falseで「前へ」「次へ」のボタンの非表示
 
     pageDots: false,
-    // falseでドットナビゲーションを非表示。デフォルトはtrue。
-
-    reseze: false,
-    // falseでリサイズした時にサイズ変更しない。デフォルトはtrue。
+    // falseでドットナビゲーションを非表示
 
     autoPlay: true
-    // trueで3秒間隔で自動スクロール。秒数を指定したい場合は1500などミリ秒で指定する。デフォルトはfalse。
+    // trueで3秒間隔で自動スクロール。秒数を指定したい場合は1500などミリ秒で指定する
 
   });
 });

@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="/">
         <h1>3DCGbeginners</h1>
@@ -20,4 +20,24 @@
       </div>
     </div>
   </nav>
+  <nav>
+    <ul class="nav nav-tabs bg-dark mb-2">
+      <% if request.path.include?("questions") %>
+        <li class="col-6 nav-item">
+          <%= link_to "ニュース" , root_path, class: 'nav-link text-white' %>
+        </li>
+        <li class="col-6 nav-item">
+          <%= link_to "Q&A" , questions_path, class: 'nav-link active' %>
+        </li>
+      <% else %>
+        <li class="col-6 nav-item">
+          <%= link_to "ニュース" , root_path, class: 'nav-link active' %>
+        </li>
+        <li class="col-6 nav-item">
+          <%= link_to "Q&A" , questions_path, class: 'nav-link text-white' %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
 </header>
+

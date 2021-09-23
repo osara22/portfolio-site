@@ -11,6 +11,9 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <% if current_page?(root_path) || request.path.include?("blogs") && !request.path.include?("admin") %>
+      <%= render 'layouts/header_blog_slide', slide_blogs: @slide_blogs %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

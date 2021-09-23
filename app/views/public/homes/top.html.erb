@@ -1,29 +1,16 @@
-<div class="header-content">
-  <ul class="js-flickity">
-    <% @slide_blogs.each do |blog| %>
-      <li class="gallery-cell" id="gallery-cell-<%= blog.id %>">
-        <%= link_to blog_path(blog) do %>
-          <%= attachment_image_tag blog, :top_image, :fill, 600, 300, format: 'jpg', class: 'slide-image' %>
-          <p><%= blog.title.truncate(20) %></p>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<div class="container mt-5">
+<div class="container">
   <div class="row">
     <div class="col-9">
-      <h2 class="border-bottom">新着記事</h2>
-      <%= link_to "Q&Aサイトへ", questions_path , class: 'btn btn-light' %>
-      <div class="row row-cols-2">
+      <h2 class="border-bottom mb-3">新着記事</h2>
+      <div class="row row-cols-2 border-bottom">
+      <%= render 'layouts/blog_card', blogs: @blogs %>
       <% @blogs.each do |blog| %>
           <div class="col">
           <%= link_to blog_path(blog) do %>
             <div class="card mb-4">
               <%= attachment_image_tag blog, :top_image, :fill, 400,300, format:'jpeg', class: 'card-img-top' %>
                 <div class="card-body">
-                <p class="card-title text-dark"><b><%= blog.title %></b></p>
+                  <p class="card-title"><b><%= blog.title %></b></p>
                 </div>
             </div>
           <% end %>
