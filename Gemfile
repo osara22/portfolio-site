@@ -84,6 +84,8 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'jquery-ui-rails'
 # MySQL
 gem 'dotenv-rails'
+# アイコンの追加
+gem 'font-awesome-sass', '~> 5.13'
 
 gem 'sassc','~>2.1.0'
 
