@@ -14,10 +14,25 @@
  *= require_self
  */
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP');
 // レイアウトのためのTagit
 @import "jquery.tagit";
 @import "tagit.ui-zendesk";
 @import "flickity";
+
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #272343;
+}
+
+a {
+  color: #1f4e5f;
+}
+
+a:hover {
+  color: #ff8c00;
+}
 
 .post-date-list ul {
   list-style: none;
