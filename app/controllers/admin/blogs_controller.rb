@@ -22,15 +22,10 @@ class Admin::BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
-      redirect_to admin_blog_path(@blog.id)
+      redirect_to blog_path(@blog.id)
     else
       render :new
     end
-  end
-
-  def show
-    @blog = Blog.find(params[:id])
-    @tags = Blog.find(params[:id]).tag_counts_on(:tags)
   end
 
   def edit
@@ -40,7 +35,7 @@ class Admin::BlogsController < ApplicationController
   def update
     @blog = Blog.find(params[:id])
     if @blog.update(blog_params)
-      redirect_to admin_blog_path(@blog.id)
+      redirect_to blog_path(@blog.id)
     else
       render :edit
     end
@@ -50,7 +45,7 @@ class Admin::BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :body, :top_image, :body_image, :video_url, :tag_list)
+    params.require(:blog).permit(:title, :body, :top_image, :body_image, :video_url, :tag_list, :twitter_url)
   end
 
 end

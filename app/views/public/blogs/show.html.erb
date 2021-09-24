@@ -34,6 +34,7 @@
       <div class="blog-body">
         <p><%= markdown(@blog.body) %></p>
         <%= render 'layouts/youtube', blog: @blog %>
+        <%= render 'layouts/twitter', blog: @blog %>
         <%= attachment_image_tag @blog, :body_image, style: 'width: 100%' %>
       </div>
       <% if user_signed_in? %>

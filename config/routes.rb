@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :blogs, only:[:index, :new, :create, :show, :edit, :update]
+    resources :blogs, only:[:index, :new, :create, :edit, :update]
   end
 
   scope module: :public do

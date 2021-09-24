@@ -23,6 +23,10 @@
               <td><%= f.text_field :video_url, size: 100, placeholder: "(例)https://youtu.be/〇〇〇〇〇〇" %></td>
             </tr>
             <tr class="mb-3">
+              <td class="text-center"><%= f.label :twitter_url, "twitterのURL" %></td>
+              <td><%= f.text_field :twitter_url, size: 100, placeholder: "(例)https://twitter.com/〇〇〇〇〇〇" %></td>
+            </tr>
+            <tr class="mb-3">
               <td class="text-center"><%= f.label :body_image, "BODYイメージ" %></td>
               <td><%= f.attachment_field :body_image %></td>
             </tr>
