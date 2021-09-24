@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+        <h2 class="border-bottom mb-3">お気に入り一覧</h2>
+      <div class="row row-cols-2">
+        <%= render 'layouts/blog_card', blogs: @blogs %>
+      </div>
+
+    </div>
+    <%= render 'layouts/sidebar', tags: @tags %>
+  </div>
+</div>
+

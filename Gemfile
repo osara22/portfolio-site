@@ -86,6 +86,8 @@ gem 'jquery-ui-rails'
 gem 'dotenv-rails'
 # アイコンの追加
 gem 'font-awesome-sass', '~> 5.13'
+# 閲覧数カウント
+gem 'impressionist', '~>1.6.1'
 
 gem 'sassc','~>2.1.0'
 

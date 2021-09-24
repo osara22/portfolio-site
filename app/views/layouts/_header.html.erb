@@ -7,12 +7,13 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? || admin_signed_in? %>
-            <%= link_to " 会員ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-light' %>
-            <%= link_to " 管理者ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-light' %>
+            <% if current_page?(root_path) || request.path.include?("blogs") %>
+              <%= link_to "お気に入り一覧", my_favorite_blogs_path, class: 'btn btn-light mr-3' %>
+            <% end %>
+            <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-light mr-3' %>
           <% else %>
-            <%= link_to " 会員新規登録", new_user_registration_path, class: 'btn btn-light' %>
-            <%= link_to " 会員ログイン", new_user_session_path, class: 'btn btn-light' %>
-            <%= link_to " 管理者ログイン", new_admin_session_path, class: 'btn btn-light' %>
+            <%= link_to " 会員新規登録", new_user_registration_path, class: 'btn btn-light mr-3' %>
+            <%= link_to " 会員ログイン", new_user_session_path, class: 'btn btn-light mr-3' %>
           <% end %>
           <%= render 'layouts/search' %>
         </ul>

@@ -6,6 +6,9 @@ class Blog < ApplicationRecord
 
   validates :title, :body, presence: true
 
+  # 閲覧数カウント機能の追加
+  is_impressionable counter_cache: true
+
   # タグ機能の追加
   acts_as_taggable
 

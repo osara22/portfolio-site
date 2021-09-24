@@ -20,8 +20,8 @@
       </div>
       <div class="blog-tag mb-3">
         <i class="fas fa-tags"></i>：
-        <% if @tags.present? %>
-          <% @tags.each do |tag| %>
+        <% if @blog_tags.present? %>
+          <% @blog_tags.each do |tag| %>
             <%= link_to "#{tag.name}", admin_blogs_path(:tag => tag.name), class: 'btn btn-dark btn-sm' %>
           <% end %>
         <% else %>
@@ -45,6 +45,6 @@
         <%= render 'public/blog_comments/blog_comment', blog_comment: @blog_comment, blog: @blog %>
       </div>
     </div>
-    <%= render 'layouts/sidebar' %>
+    <%= render 'layouts/sidebar', tags: @tags %>
   </div>
 </div>

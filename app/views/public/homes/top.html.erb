@@ -8,11 +8,13 @@
       <% else %>
         <h2 class="border-bottom mb-3">新着記事</h2>
       <% end %>
-
       <div class="row row-cols-2">
-      <%= render 'layouts/blog_card', blogs: @blogs %>
-    </div>
+        <%= render 'layouts/blog_card', blogs: @blogs %>
+      </div>
+      <%= paginate @blogs %>
     </div>
     <%= render 'layouts/sidebar', tags: @tags %>
   </div>
+  <%= link_to " お問い合わせ", new_contacts_path, class: 'btn btn-light' %>
 </div>
+

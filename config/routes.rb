@@ -25,9 +25,14 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :blogs, only:[:index, :show] do
+    resources :blogs, only:[:index, :show, :my_favorite] do
       resources :blog_comments, only: [:create]
       resource :blog_favorites, only: [:create, :destroy]
+    end
+    get 'my_favorite_blogs' => 'blogs#my_favorite'
+
+    resource :contacts, only: [:new, :create] do
+      get 'thank'
     end
   end
 
