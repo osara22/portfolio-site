@@ -2,15 +2,16 @@ class Public::QuestionsController < ApplicationController
   # ログインしてなければログインページににリダイレクトする
   before_action :user_not_signin, {except: [:index, :unsolved, :solved, :show]}
   def index
-
+    @question_solved = Question.where.not(thank: nil).last(4).reverse
+    @question_unsolved = Question.where(thank: nil).last(4).reverse
   end
 
   def unsolved
-    @questions = Question.where(thank: nil)
+    @questions = Question.where(thank: nil).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def solved
-    @questions = Question.where.not(thank: nil)
+    @questions = Question.where.not(thank: nil).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def my_question
@@ -33,7 +34,9 @@ class Public::QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @best_answer = @question.answers.find(@question.best_answer_id)
+    if @question.best_answer_id.present?
+      @best_answer = @question.answers.find(@question.best_answer_id)
+    end
   end
 
   def update

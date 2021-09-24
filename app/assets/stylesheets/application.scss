@@ -28,6 +28,11 @@ body {
   color: #272343;
 }
 
+footer {
+  padding: 100px;
+  width: 100%;
+}
+
 a {
   color: #1f4e5f;
 }
@@ -75,4 +80,25 @@ a:hover {
 
 .pagination {
   justify-content: center;
+}
+
+.cover-img {
+  height: 600px;
+	display: table;
+	width: 100%;
+	background-image: url("/assets/default_cube.jpg");
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	color: white;
+}
+
+.cover-img-inner-box {
+  position: absolute;
+  top: calc(50% - 150px);
+  left: calc(50% - 580px);
+}
+
+.question-title {
+  color: #007bff;
 }
