@@ -1,6 +1,7 @@
 class Blog < ApplicationRecord
   attachment :top_image
   attachment :body_image
+  has_many :blog_comments, dependent: :destroy
 
   validates :title, :body, presence: true
 

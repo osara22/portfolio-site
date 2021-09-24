@@ -25,7 +25,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :blogs, only:[:index, :show]
+    resources :blogs, only:[:index, :show] do
+      resources :blog_comments, only: [:create]
+    end
   end
 
   # UserとAdminのログインページ
