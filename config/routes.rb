@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     resources :blogs, only:[:index, :show] do
       resources :blog_comments, only: [:create]
+      resource :blog_favorites, only: [:create, :destroy]
     end
   end
 

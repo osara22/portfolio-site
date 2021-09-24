@@ -36,6 +36,11 @@
         <%= render 'layouts/youtube', blog: @blog %>
         <%= attachment_image_tag @blog, :body_image, style: 'width: 100%' %>
       </div>
+      <% if user_signed_in? %>
+        <div id="blog-favorite-<%= @blog.id %>">
+          <%= render 'public/blog_favorites/blog_favorite', blog: @blog %>
+        </div>
+      <% end %>
       <div id="comments-area">
         <%= render 'public/blog_comments/blog_comment', blog_comment: @blog_comment, blog: @blog %>
       </div>

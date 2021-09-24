@@ -4,11 +4,12 @@ class Admin::BlogsController < ApplicationController
 
   def index
     @tags = Blog.tag_counts_on(:tags)
-    @search_word = params[:search_word]
     if params[:tag]
+      @tag = params[:tag]
       @blogs = Blog.tagged_with(params[:tag])
     elsif params[:search_word]
-      @blogs = Blog.where("name Like ?", "%" + @search_word + "%")
+      @search_word = params[:search_word]
+      @blogs = Blog.where("title Like ?", "%" + @search_word + "%")
     else
       @blogs = Blog.all
     end
