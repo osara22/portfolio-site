@@ -32,23 +32,38 @@
 $(function(){
   $('.js-flickity').flickity({
 
-    wrapAround: true,
     //　無限スクロール
+    wrapAround: true,
 
-    contain: true,
     //　trueでラッパー要素の中で収まるようにスクロールする
+    contain: true,
 
-    rightToLeft: true,
     // trueでスライドの始まりが右になる
+    rightToLeft: true,
 
-    prevNextButtons: false,
     // falseで「前へ」「次へ」のボタンの非表示
+    prevNextButtons: false,
 
-    pageDots: false,
     // falseでドットナビゲーションを非表示
+    pageDots: false,
 
-    autoPlay: true
     // trueで3秒間隔で自動スクロール。
+    autoPlay: true
 
   });
+});
+
+// noticeの表示に動きを作る
+$(function(){
+  $('.notice').delay(500).slideDown();
+});
+$(function(){
+  $('.notice').delay(5000).slideUp();
+});
+
+$(function(){
+  $('.alert').delay(500).slideDown();
+});
+$(function(){
+  $('.alert').delay(5000).slideUp();
 });

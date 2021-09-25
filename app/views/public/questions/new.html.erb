@@ -6,11 +6,11 @@
         <table class="table">
           <tbody>
             <tr class="mb-3">
-              <td class="text-center"><%= f.label :title, "質問タイトル" %></td>
-              <td><%= f.text_field :title, size: 80, placeholder: "タイトル名" %></td>
+              <td class="text-center"><%= f.label :title, "質問タイトル（必須）" %></td>
+              <td><%= f.text_field :title, size: 80, placeholder: "入力してください" %></td>
             </tr>
             <tr class="mb-3">
-              <td class="text-center"><%= f.label :body, "質問の内容" %></td>
+              <td class="text-center"><%= f.label :body, "質問の内容（必須）" %></td>
               <td><%= f.text_area :body, cols: 100, rows: 20, placeholder: "入力してください" %></td>
             </tr>
             <tr class="mb-3">

@@ -1,3 +1,11 @@
-<h1>AdminのTopページです</h1>
-<%= link_to " ブログ一覧", admin_blogs_path, class: 'btn btn-light' %>
-<%= link_to "ブログ投稿", new_admin_blog_path, class: 'btn btn-light' %>
+<div class="container">
+  <div class="row">
+    <div class="col border bg-light rounded py-5 my-5">
+      <h1>管理者メニュー</h1>
+      <div class="mt-5">
+        <%= link_to " ブログ一覧", admin_blogs_path, class: 'btn btn-light border' %>
+        <%= link_to "ブログ投稿", new_admin_blog_path, class: 'btn btn-light border' %>
+      </div>
+    </div>
+  </div>
+</div>

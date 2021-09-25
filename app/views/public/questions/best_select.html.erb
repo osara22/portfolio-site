@@ -13,7 +13,7 @@
   <div class="row bg-light mt-3 border rounded">
     <%= form_with model: @question, url:question_path(@question), local:true do |f| %>
       <div class="col">
-        <h3 class="py-3 border-bottom">ベストアンサーを選ぶ</h3>
+        <h3 class="py-3 border-bottom">ベストアンサーを選ぶ（必須）</h3>
         <% @question.answers.each do |answer| %>
           <div class="row border-bottom">
             <div class="col-1 p-5">
@@ -28,7 +28,7 @@
           </div>
         <% end %>
         <h3 class="my-3"><%= f.label :thank, "感謝文を入力する" %></h3>
-        <%= f.text_area :thank, cols: 100, rows: 5, placeholder: "入力してください" %>
+        <%= f.text_area :thank, cols: 100, rows: 5, placeholder: "入力をする" %>
         <div class="row">
           <div class="col">
             <%= f.button '新規登録', type: 'button', onclick: 'submit();', class: "btn btn-success my-3" %>

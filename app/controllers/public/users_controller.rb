@@ -30,9 +30,10 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = 'You have updated user successfully.'
+      flash[:notice] = 'プロフィールを変更しました'
       redirect_to user_path(@user.id)
     else
+      flash[:alert] = '入力に間違いがあります'
       render :edit
     end
   end

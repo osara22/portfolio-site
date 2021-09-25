@@ -4,7 +4,7 @@ class Blog < ApplicationRecord
   has_many :blog_comments, dependent: :destroy
   has_many :blog_favorites, dependent: :destroy
 
-  validates :title, :body, presence: true
+  validates :title, :body, :top_image, presence: true
 
   # 閲覧数カウント機能の追加
   is_impressionable counter_cache: true

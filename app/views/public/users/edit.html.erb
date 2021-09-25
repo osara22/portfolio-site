@@ -10,15 +10,15 @@
         <table class="table">
           <tbody>
             <tr>
-              <td><%= f.label :name, "ユーザー名" %></td>
+              <td><%= f.label :name, "ユーザー名（必須）" %></td>
               <td><%= f.text_field :name, size: 40, placeholder: "ユーザー名" %></td>
             </tr>
             <tr>
-              <td><%= f.label :email, "メールアドレス" %></td>
+              <td><%= f.label :email, "メールアドレス（必須）" %></td>
               <td><%= f.email_field :email, size: 40, placeholder: "メールアドレス" %></td>
             </tr>
             <tr>
-              <td><%= f.label :introduction, "自己紹介" %></td>
+              <td><%= f.label :introduction, "自己紹介（250文字以内）" %></td>
               <td><%= f.text_area :introduction, cols: 60, rows: 10, placeholder: "250文字まで" %></td>
             </tr>
             <tr>

@@ -13,8 +13,12 @@ class Public::AnswersController < ApplicationController
     answer = current_user.answers.new(answer_params)
     answer.question_id = question.id
     if answer.save
+      flash[:notice] = '投稿に成功しました'
       redirect_to question_path(question)
     else
+      flash[:alert] = '入力してください'
+      @answer = Answer.new
+      @question = Question.find(params[:id])
       render :new
     end
   end
