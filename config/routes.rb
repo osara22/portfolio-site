@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         get 'unsolved'
         get 'solved'
         get 'my_question'
-        post 'check'
+        get 'search'
       end
       member do
         # ベストアンサーを選ぶ画面
@@ -28,8 +28,10 @@ Rails.application.routes.draw do
     resources :blogs, only:[:index, :show, :my_favorite] do
       resources :blog_comments, only: [:create]
       resource :blog_favorites, only: [:create, :destroy]
+      collection do
+        get 'my_favorite'
+      end
     end
-    get 'my_favorite_blogs' => 'blogs#my_favorite'
 
     resource :contacts, only: [:new, :create] do
       get 'thank'

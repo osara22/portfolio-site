@@ -48,8 +48,14 @@ class Public::QuestionsController < ApplicationController
     end
   end
 
-  def check
-
+  def search
+    @search_word = params[:search_word]
+    if params[:search_word].present?
+      @question_solved = Question.where.not(thank: nil).where("title Like ?", "%" + @search_word + "%")
+      @question_unsolved = Question.where(thank: nil).where("title Like ?", "%" + @search_word + "%")
+    else
+      redirect_to questions_path
+    end
   end
 
   def best_select
