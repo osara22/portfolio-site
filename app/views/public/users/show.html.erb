@@ -3,26 +3,26 @@
     <h1>ユーザーページ</h1>
   </div>
   <div class="row my-5">
-      <div class="col">
-        <%= attachment_image_tag @user, :user_image, :fill, 300, 300, format: 'jpeg', fallback:"sample_img.jpg", size: '300x300', class: 'rounded-circle' %>
+    <div class="col">
+      <%= attachment_image_tag @user, :user_image, :fill, 300, 300, format: 'jpeg', fallback:"sample_img.jpg", size: '300x300', class: 'rounded-circle' %>
+    </div>
+    <div class="col my-5">
+      <ul class="my-5" style="list-style: none">
+        <li class="h3">ユーザーネーム : <%= link_to @user.name, user_path(@user) %> さん</li>
+        <li>登録日：<%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+        <li>自己紹介：</li>
+        <li><%= @user.introduction %></li>
+      </ul>
+      <div class="text-center">
+        <%= link_to "お気に入り記事", user_favorite_blogs_path(@user), class: 'btn btn-light mr-3' %>
+        <%= link_to "投稿した質問", user_questions_path(@user), class: 'btn btn-light mr-3' %>
+        <%= link_to "お気に入り質問", root_path, class: 'btn btn-light mr-3' %>
       </div>
-      <div class="col my-5">
-        <ul class="my-5" style="list-style: none">
-          <li class="h3">ユーザーネーム : <%= link_to @user.name, user_path(@user) %> さん</li>
-          <li>登録日：<%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></li>
-          <li>自己紹介：</li>
-          <li><%= @user.introduction %></li>
-        </ul>
-        <div class="text-center">
-          <%= link_to "お気に入り記事", user_favorite_blogs_path(@user), class: 'btn btn-light mr-3' %>
-          <%= link_to "投稿した質問", user_questions_path(@user), class: 'btn btn-light mr-3' %>
-          <%= link_to "お気に入り質問", root_path, class: 'btn btn-light mr-3' %>
+      <% if @user == current_user %>
+        <div class="text-center my-3">
+          <%= link_to "プロフィール編集", my_favorite_blogs_path, class: 'btn btn-light mr-3' %>
         </div>
-        <% if @user == current_user %>
-          <div class="text-center my-3">
-            <%= link_to "プロフィール編集", my_favorite_blogs_path, class: 'btn btn-light mr-3' %>
-          </div>
-        <% end %>
-      </div>
+      <% end %>
+    </div>
   </div>
 </div>
