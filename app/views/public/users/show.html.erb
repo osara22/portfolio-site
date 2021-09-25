@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row mt-5">
+    <h1>ユーザーページ</h1>
+  </div>
+  <div class="row my-5 border rounded bg-light">
+    <div class="col">
+      <%= attachment_image_tag @user, :user_image, :fill, 300, 300, format: 'jpeg', fallback:"sample_img.jpg", size: '300x300', class: 'rounded-circle m-5' %>
+    </div>
+    <div class="col my-5">
+      <ul class="my-5" style="list-style: none">
+        <li class="h3">ユーザーネーム : <%= link_to @user.name, user_path(@user) %> さん</li>
+        <li>登録日：<%= @user.created_at.strftime('%Y/%m/%d %H:%M') %></li>
+        <li>自己紹介：</li>
+        <li><%= simple_format(@user.introduction) %></li>
+      </ul>
+      <div class="text-center">
+        <%= link_to "お気に入り記事", user_favorite_blogs_path(@user), class: 'btn btn-light mr-3 border' %>
+        <%= link_to "投稿した質問", user_questions_path(@user), class: 'btn btn-light mr-3 border' %>
+        <%= link_to "お気に入り質問", user_favorite_questions_path(@user), class: 'btn btn-light mr-3 border' %>
+      </div>
+      <% if @user == current_user %>
+        <div class="text-center my-3">
+          <%= link_to "プロフィール編集", edit_user_path(@user), class: 'btn btn-light mr-3 border' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -16,12 +16,12 @@
 //= require bootstrap-sprockets
 
 
-
 //= require jquery
-//= require flickity.pkgd.min
 //= require jquery_ujs
 //= require jquery-ui
 //= require tag-it
+
+//= require flickity.pkgd.min
 
 //= require rails-ujs
 //= require activestorage
@@ -48,7 +48,7 @@ $(function(){
     // falseでドットナビゲーションを非表示
 
     autoPlay: true
-    // trueで3秒間隔で自動スクロール。秒数を指定したい場合は1500などミリ秒で指定する
+    // trueで3秒間隔で自動スクロール。
 
   });
 });

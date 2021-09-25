@@ -1,11 +1,33 @@
-<div class="container">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 cover-img ">
+      <div class="cover-img-inner-box">
+        <h1 style="font-size:100px">HELLO ! 3DCGMODELER ! </h1>
+        <h1 class="text-center">3DCGbeginnersは</h1>
+        <h1 class="text-center">3DCG特化型の質問サイトです</h1>
+        <div class="text-center mt-5">
+          <% if user_signed_in? || admin_signed_in? %>
+            <%= link_to " 質問する", new_question_path, class: 'btn btn-light btn-lg' %>
+          <% else %>
+            <%= link_to " 会員新規登録", new_user_registration_path, class: 'btn btn-light btn-lg mr-3' %>
+            <%= link_to " 会員ログイン", new_user_session_path, class: 'btn btn-light btn-lg mr-3' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-3">
   <div class="row">
     <div class="col">
-      <h1>Q&Aサービスのトップページです</h1>
-      <%= link_to "Q&A新規作成", new_question_path , class: 'btn btn-light' %>
-      <%= link_to "未解決のQ&A一覧", unsolved_questions_path , class: 'btn btn-light' %>
-      <%= link_to "解決済みのQ&A一覧", solved_questions_path , class: 'btn btn-light' %>
-      <%= link_to "投稿したQ&A一覧", my_question_questions_path , class: 'btn btn-light' %>
+      <h1 class="border-bottom pb-3">新着未解決</h1>
+      <%= render 'layouts/question_list', questions: @question_unsolved %>
+      <%= link_to "未解決のQ&A一覧", unsolved_questions_path , class: 'btn btn-light border' %>
+    </div>
+    <div class="col">
+      <h1 class="border-bottom pb-3">解決済み</h1>
+      <%= render 'layouts/question_list', questions: @question_solved %>
+      <%= link_to "解決済みのQ&A一覧", solved_questions_path , class: 'btn btn-light border' %>
     </div>
   </div>
 </div>

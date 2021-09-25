@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="border-bottom py-3"><%= @user.name %>さんのお気に入りの質問</h1>
+      <%= render 'layouts/question_list', questions: @questions %>
+    </div>
+  </div>
+</div>

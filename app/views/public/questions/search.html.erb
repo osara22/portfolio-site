@@ -1,0 +1,24 @@
+<div class="container mt-3">
+  <div class="row">
+    <h1>Q&Aタイトル検索 - "<%= @search_word %>"</h1>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h1 class="border-bottom pb-3">未解決のQ&A (<%= @question_unsolved.length %>件)</h1>
+      <% if @question_unsolved.present? %>
+        <%= render 'layouts/question_list', questions: @question_unsolved %>
+      <% else %>
+        <h3>タイトル一致無し</h3>
+      <% end %>
+    </div>
+    <div class="col">
+      <h1 class="border-bottom pb-3">解決済みのQ&A (<%= @question_solved.length %>件)</h1>
+      <% if @question_solved.present? %>
+        <%= render 'layouts/question_list', questions: @question_solved %>
+      <% else %>
+        <h3>タイトル一致無し</h3>
+      <% end %>
+    </div>
+  </div>
+</div>

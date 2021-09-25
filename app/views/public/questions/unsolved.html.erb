@@ -1,17 +1,9 @@
 <div class="container">
-    <div class="row">
-      <div class="col">
-        <h1>未解決問題一覧</h1>
-        <table class="table">
-          <tbody>
-            <% @questions.each do |question| %>
-              <tr>
-                <td><%= link_to question.title, question_path(question) %></td>
-                <td><%= question.body.truncate(20) %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+  <div class="row">
+    <div class="col">
+      <h1 class="border-bottom pb-3">未解決質問一覧</h1>
+      <%= render 'layouts/question_list', questions: @questions %>
+      <%= paginate @questions %>
     </div>
+  </div>
 </div>

@@ -1,20 +1,21 @@
 class Public::QuestionsController < ApplicationController
   # ログインしてなければログインページににリダイレクトする
-  before_action :user_not_signin, {except: [:index, :unsolved, :solved, :show]}
+  before_action :user_not_signin, { except: %i[index unsolved solved show] }
   def index
-
+    @question_solved = Question.where.not(thank: nil).last(4).reverse
+    @question_unsolved = Question.where(thank: nil).last(4).reverse
   end
 
   def unsolved
-    @questions = Question.where(thank: nil)
+    @questions = Question.where(thank: nil).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def solved
-    @questions = Question.where.not(thank: nil)
+    @questions = Question.where.not(thank: nil).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def my_question
-    @questions = current_user.questions
+    @questions = current_user.questions.page(params[:page]).per(10)
   end
 
   def new
@@ -33,20 +34,26 @@ class Public::QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @best_answer = @question.answers.find(@question.best_answer_id)
+    @best_answer = @question.answers.find(@question.best_answer_id) if @question.best_answer_id.present?
   end
 
   def update
     @question = Question.find(params[:id])
-    if @question.update(best_answer_params)
+    if @question.update(best_answer_params) && best_answer_id_present?
       redirect_to question_path(@question)
     else
-      render :edit
+      render :best_select
     end
   end
 
-  def check
-
+  def search
+    @search_word = params[:search_word]
+    if params[:search_word].present?
+      @question_solved = Question.where.not(thank: nil).where('title Like ?', "%#{@search_word}%")
+      @question_unsolved = Question.where(thank: nil).where('title Like ?', "%#{@search_word}%")
+    else
+      redirect_to questions_path
+    end
   end
 
   def best_select
@@ -62,5 +69,10 @@ class Public::QuestionsController < ApplicationController
 
   def best_answer_params
     params.require(:question).permit(:thank, :best_answer_id)
+  end
+
+  # ベストアンサー用
+  def best_answer_id_present?
+    params.require(:question).permit(:best_answer_id).present?
   end
 end

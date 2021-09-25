@@ -1,23 +1,19 @@
 <div class="container">
   <div class="row">
     <div class="col-9">
-      <h2 class="border-bottom mb-3">新着記事</h2>
-      <div class="row row-cols-2 border-bottom">
-      <%= render 'layouts/blog_card', blogs: @blogs %>
-      <% @blogs.each do |blog| %>
-          <div class="col">
-          <%= link_to blog_path(blog) do %>
-            <div class="card mb-4">
-              <%= attachment_image_tag blog, :top_image, :fill, 400,300, format:'jpeg', class: 'card-img-top' %>
-                <div class="card-body">
-                  <p class="card-title"><b><%= blog.title %></b></p>
-                </div>
-            </div>
-          <% end %>
-        </div>
+      <% if @tag.present? %>
+        <h2 class="border-bottom mb-3">タグ検索 - <%= @tag %></h2>
+      <% elsif @search_word.present? %>
+        <h2 class="border-bottom mb-3">タイトル検索 - "<%= @search_word %>"</h2>
+      <% else %>
+        <h2 class="border-bottom mb-3">新着記事</h2>
       <% end %>
+      <div class="row row-cols-2">
+        <%= render 'layouts/blog_card', blogs: @blogs %>
+      </div>
+      <%= paginate @blogs %>
     </div>
-    </div>
-    <%= render 'layouts/sidebar' %>
+    <%= render 'layouts/sidebar', tags: @tags %>
   </div>
 </div>
+

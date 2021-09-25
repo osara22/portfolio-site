@@ -1,13 +1,13 @@
 module ApplicationHelper
-  require "redcarpet"
-  require "coderay"
+  require 'redcarpet'
+  require 'coderay'
 
   # マークダウン形式 (redcarpet)
   def markdown(text)
     options = {
       filter_html: true, # htmlを出力しない
-      hard_wrap: true, #マークダウン中の空行をhtmlに置き換える
-      space_after_headers: true, # #と文字の間にスペースを要求する
+      hard_wrap: true, # マークダウン中の空行をhtmlに置き換える
+      space_after_headers: true # #と文字の間にスペースを要求する
     }
 
     extensions = {
@@ -20,7 +20,7 @@ module ApplicationHelper
       underline: true, # 斜線を入れる (* *)
       highlight: true, # ハイライトを入れる (== ==)
       quote: true, # 引用符を入れる (" ")
-      footnotes: true, # 脚注を入れる (^[1])
+      footnotes: true # 脚注を入れる (^[1])
 
     }
 
@@ -34,23 +34,22 @@ module ApplicationHelper
     def block_code(code, language)
       language = language.split(':')[0]
 
-      case language.to_s
-      when 'rb'         # rb も ruby　と認識させる
-        lang = 'ruby'
-      when 'yml'
-        lang = 'yaml'
-      when 'css'
-        lang = 'css'
-      when 'html'
-        lang = 'html'
-      when ''
-        lang = 'md'
-      else
-        lang = language
-      end
+      lang = case language.to_s
+             when 'rb'         # rb も ruby　と認識させる
+               'ruby'
+             when 'yml'
+               'yaml'
+             when 'css'
+               'css'
+             when 'html'
+               'html'
+             when ''
+               'md'
+             else
+               language
+             end
 
       CodeRay.scan(code, lang).div
     end
   end
-
 end

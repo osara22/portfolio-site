@@ -1,14 +1,13 @@
-<h1>UserのQ&A投稿ページです</h1>
-
 <div class="container">
   <div class="row">
+    <h1>質問投稿</h1>
     <div class="col">
       <%= form_with model: @question, url:questions_path, local:true do |f| %>
         <table class="table">
           <tbody>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :title, "質問タイトル" %></td>
-              <td><%= f.text_field :title, size: 100, placeholder: "タイトル名" %></td>
+              <td><%= f.text_field :title, size: 80, placeholder: "タイトル名" %></td>
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :body, "質問の内容" %></td>
@@ -19,6 +18,7 @@
               <td><%= f.attachment_field :image %></td>
             </tr>
             <tr>
+              <td></td>
               <td><%= f.button '新規登録', type: 'button', onclick: 'submit();', class: "btn btn-success mt-3" %></td>
             </tr>
           </tbody>

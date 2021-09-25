@@ -19,8 +19,12 @@
               <td><%= f.text_area :body, cols: 100, rows: 20, placeholder: "入力してください(マークダウン形式OK)" %></td>
             </tr>
             <tr class="mb-3">
-              <td class="text-center"><%= f.label :video_url, "youtube動画のURL" %></td>
+              <td class="text-center"><%= f.label :video_url, "youtube動画のURL(秒数抜き)" %></td>
               <td><%= f.text_field :video_url, size: 100, placeholder: "(例)https://youtu.be/〇〇〇〇〇〇" %></td>
+            </tr>
+            <tr class="mb-3">
+              <td class="text-center"><%= f.label :twitter_url, "twitterのURL" %></td>
+              <td><%= f.text_field :twitter_url, size: 100, placeholder: "(例)https://twitter.com/〇〇〇〇〇〇" %></td>
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :body_image, "BODYイメージ" %></td>
@@ -28,7 +32,7 @@
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :tag_list %></td>
-              <td><%= f.text_field :tag_list, value: @blog.tag_list.join(','), placeholder: "( , )で区切ると複数タグを登録できます" %></td>
+              <td><%= f.text_field :tag_list, value: @blog.tag_list.join(','), size: 30, placeholder: "( , )で区切ると複数タグを登録できます" %></td>
             </tr>
             <tr>
               <td><%= f.button '新規登録', type: 'button', onclick: 'submit();', class: "btn btn-success mt-3" %></td>

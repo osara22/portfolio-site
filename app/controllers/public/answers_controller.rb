@@ -3,11 +3,10 @@ class Public::AnswersController < ApplicationController
   before_action :current_user_signin
   def new
     @answer = Answer.new
+    @question = Question.find(params[:id])
   end
 
-  def check
-
-  end
+  def check; end
 
   def create
     question = Question.find(params[:id])
@@ -21,6 +20,7 @@ class Public::AnswersController < ApplicationController
   end
 
   private
+
   def answer_params
     params.require(:answer).permit(:body)
   end

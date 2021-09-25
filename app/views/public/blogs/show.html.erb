@@ -2,18 +2,50 @@
   <div class="row">
     <div class="col-9">
       <h1><%= @blog.title %></h1>
-      <% if @tags.present? %>
-        <% @tags.each do |tag| %>
-          <%= link_to "#{tag.name}(#{tag.taggings_count})", admin_blogs_path(:tag => tag.name) %>
+      <div class="row">
+        <div class="col"><p>公開日：<%= @blog.created_at.strftime('%Y年%m月%d日') %></p></div>
+        <div class="col">
+          <div class="float-right">
+            <%= link_to "https://twitter.com/share?url=#{request.url}/&text=#{@blog.title}", title: 'Twitter', target: '_blank' do %>
+              <i class="fab fa-twitter-square fa-2x text-primary"></i>
+            <% end %>
+            <%= link_to "https://www.facebook.com/share.php?u=#{request.url}", title: 'Facebook', target: '_blank' do %>
+              <i class="fab fa-facebook-square fa-2x"></i>
+            <% end %>
+            <%= link_to "https://line.me/R/msg/text/?#{request.url}", title: 'line', target: '_blank' do %>
+              <i class="fab fa-line fa-2x text-success"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="blog-tag mb-3">
+        <i class="fas fa-tags"></i>：
+        <% if @blog_tags.present? %>
+          <% @blog_tags.each do |tag| %>
+            <%= link_to "#{tag.name}", admin_blogs_path(:tag => tag.name), class: 'btn btn-dark btn-sm' %>
+          <% end %>
+        <% else %>
+          <p>タグはありません</p>
         <% end %>
-      <% else %>
-        <p>タグはありません</p>
+      </div>
+      <div class="blog-top-image">
+        <%= attachment_image_tag @blog, :top_image, :fill, 800, 300, format: 'jpg' %>
+      </div>
+      <div class="blog-body">
+        <p><%= markdown(@blog.body) %></p>
+        <%= render 'layouts/youtube', blog: @blog %>
+        <%= render 'layouts/twitter', blog: @blog %>
+        <%= attachment_image_tag @blog, :body_image, style: 'width: 100%' %>
+      </div>
+      <% if user_signed_in? %>
+        <div id="blog-favorite-<%= @blog.id %>">
+          <%= render 'public/blog_favorites/blog_favorite', blog: @blog %>
+        </div>
       <% end %>
-      <%= attachment_image_tag @blog, :top_image, :fill, 800, 300, format: 'jpg' %>
-      <p><%= markdown(@blog.body) %></p>
-      <%= render 'layouts/youtube', blog: @blog %>
-      <%= attachment_image_tag @blog, :body_image %>
+      <div id="comments-area">
+        <%= render 'public/blog_comments/blog_comment', blog_comment: @blog_comment, blog: @blog %>
+      </div>
     </div>
-    <%= render 'layouts/sidebar' %>
+    <%= render 'layouts/sidebar', tags: @tags %>
   </div>
 </div>
