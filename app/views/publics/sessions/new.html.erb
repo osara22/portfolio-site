@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col my-5">
+    <div class="col my-5 border py-5 rounded bg-light">
       <h2>ログイン</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
@@ -21,8 +21,6 @@
           <%= f.button 'ログイン', type: 'button', onclick: 'submit();', class: "btn btn-success mt-3" %>
         </div>
       <% end %>
-
-      <%= render "publics/shared/links" %>
     </div>
   </div>
 </div>

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col my-3">
+      <h1>プロフィール編集</h1>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col">
+      <%= form_with model: @user, local:true do |f| %>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><%= f.label :name, "ユーザー名" %></td>
+              <td><%= f.text_field :name, size: 40, placeholder: "ユーザー名" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :email, "メールアドレス" %></td>
+              <td><%= f.email_field :email, size: 40, placeholder: "メールアドレス" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :introduction, "自己紹介" %></td>
+              <td><%= f.text_area :introduction, cols: 60, rows: 10, placeholder: "250文字まで" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :user_image, "プロフィール画像" %></td>
+              <td><%= f.attachment_field :user_image %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><%= f.button '変更', type: 'button', onclick: 'submit();', class: "btn btn-success btn-lg mt-3" %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,7 @@
   <div class="row bg-light mt-3 border rounded">
     <%= form_with model: @question, url:question_path(@question), local:true do |f| %>
       <div class="col">
-        <h1 class="py-3 border-bottom">ベストアンサーを選ぶ</h1>
+        <h3 class="py-3 border-bottom">ベストアンサーを選ぶ</h3>
         <% @question.answers.each do |answer| %>
           <div class="row border-bottom">
             <div class="col-1 p-5">

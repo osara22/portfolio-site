@@ -1,0 +1,9 @@
+<% if question.favorited_by?(current_user) %>
+    <%= link_to question_question_favorites_path(question), class: 'btn btn-secondary mt-3', method: :delete, remote: true do %>
+      <i class="fas fa-star"></i><%= question.question_favorites.count %>　お気に入り登録済み
+    <% end %>
+<% else %>
+    <%= link_to question_question_favorites_path(question), class: 'btn btn-warning mt-3', method: :post, remote: true do %>
+      <i class="far fa-star"></i><%= question.question_favorites.count %>　お気に入り登録する
+    <% end %>
+<% end %>

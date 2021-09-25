@@ -7,13 +7,11 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? || admin_signed_in? %>
-              <p class="text-white m-auto pr-3">ようこそ！<%= current_user.name %> さん</p>
-            <% if current_page?(root_path) || request.path.include?("blogs") %>
-              <%= link_to "マイページ", user_path(current_user), class: 'btn btn-light mr-3' %>
-            <% elsif request.path.include?("questions") %>
-              <%= link_to "投稿したQ&A一覧", my_question_questions_path , class: 'btn btn-light mr-3' %>
-            <% end %>
+            <p class="text-white m-auto pr-3">ようこそ！<%= current_user.name %> さん</p>
+            <%= link_to "マイページ", user_path(current_user), class: 'btn btn-light mr-3' %>
             <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-light mr-3' %>
+          <% elsif admin_signed_in? %>
+            <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-light mr-3' %>
           <% else %>
             <%= link_to " 会員新規登録", new_user_registration_path, class: 'btn btn-light mr-3' %>
             <%= link_to " 会員ログイン", new_user_session_path, class: 'btn btn-light mr-3' %>

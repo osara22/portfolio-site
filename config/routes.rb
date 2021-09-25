@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :questions, only:[:index, :new, :create ,:show, :update] do
+      resource :question_favorites, only: [:create, :destroy]
       collection do
         get 'unsolved'
         get 'solved'
@@ -37,12 +38,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :blogs, only:[:index, :show, :my_favorite] do
+    resources :blogs, only:[:show] do
       resources :blog_comments, only: [:create]
       resource :blog_favorites, only: [:create, :destroy]
-      collection do
-        get 'my_favorite'
-      end
     end
 
     resource :contacts, only: [:new, :create] do
@@ -51,6 +49,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :edit, :update] do
       get 'favorite_blogs'
+      get 'favorite_questions'
       get 'questions'
     end
   end
