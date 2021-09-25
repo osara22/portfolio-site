@@ -19,4 +19,5 @@ class Public::BlogsController < ApplicationController
     @blogs = Blog.find(favorites)
     @tags = Blog.tags_on(:tags)
   end
+  
 end

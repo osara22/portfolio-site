@@ -3,6 +3,18 @@ Rails.application.routes.draw do
 
   get 'admin' => 'admin/homes#top'
 
+  # UserとAdminのログインページ
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+  devise_for :users, controllers: {
+    registrations: "publics/registrations",
+    sessions: "publics/sessions",
+    passwords: "publics/passwords",
+    ragistrations: "publics/registrations"
+  }
 
   namespace :admin do
     resources :blogs, only:[:index, :new, :create, :edit, :update]
@@ -36,18 +48,10 @@ Rails.application.routes.draw do
     resource :contacts, only: [:new, :create] do
       get 'thank'
     end
-  end
 
-  # UserとAdminのログインページ
-  devise_for :admins, controllers: {
-    sessions: 'admins/sessions',
-    passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
-  }
-  devise_for :users, controllers: {
-    registrations: "publics/registrations",
-    sessions: "publics/sessions",
-    passwords: "publics/passwords",
-    ragistrations: "publics/registrations"
-  }
+    resources :users, only: [:show, :edit, :update] do
+      get 'favorite_blogs'
+      get 'questions'
+    end
+  end
 end
