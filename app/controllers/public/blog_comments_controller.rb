@@ -15,6 +15,7 @@ class Public::BlogCommentsController < ApplicationController
   end
 
   private
+
   def blog_comment_params
     params.require(:blog_comment).permit(:comment, :name)
   end

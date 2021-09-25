@@ -19,7 +19,7 @@ class Blog < ApplicationRecord
 
   # youtubeのURLのIDを抽出する
   def split_id_from_youtube_url
-    url = video_url.gsub("=","/")
+    url = video_url.gsub('=', '/')
     url.split('/').last
   end
 end

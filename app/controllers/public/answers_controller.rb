@@ -6,9 +6,7 @@ class Public::AnswersController < ApplicationController
     @question = Question.find(params[:id])
   end
 
-  def check
-
-  end
+  def check; end
 
   def create
     question = Question.find(params[:id])
@@ -22,6 +20,7 @@ class Public::AnswersController < ApplicationController
   end
 
   private
+
   def answer_params
     params.require(:answer).permit(:body)
   end

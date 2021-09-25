@@ -1,5 +1,4 @@
 class Public::BlogsController < ApplicationController
-
   def show
     @slide_blogs = Blog.order('impressions_count DESC').take(5)
     @blog = Blog.find(params[:id])
@@ -8,5 +7,4 @@ class Public::BlogsController < ApplicationController
     @tags = Blog.tags_on(:tags)
     impressionist(@blog, nil, unique: [:request_hash])
   end
-
 end

@@ -13,8 +13,7 @@ class Public::ContactsController < ApplicationController
     end
   end
 
-  def thank
-  end
+  def thank; end
 
   private
 

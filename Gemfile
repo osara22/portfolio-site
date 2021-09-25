@@ -38,16 +38,20 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # リーダブルコード用
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
 end
 
 group :test do
@@ -59,17 +63,17 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # ユーザー機能追加
-gem "devise"
+gem 'devise'
 # 画像機能追加
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'
 # レイアウト支援
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari', '~> 1.2.1'
 # デバッグ
 gem 'pry-byebug'
 # 環境変数
@@ -82,14 +86,12 @@ gem 'coderay'
 gem 'acts-as-taggable-on', '~> 6.0'
 # JQury UI導入 Tag-itでUIをと整えるため
 gem 'jquery-ui-rails'
-# MySQL
-gem 'dotenv-rails'
 # アイコンの追加
 gem 'font-awesome-sass', '~> 5.13'
 # 閲覧数カウント
 gem 'impressionist', '~>1.6.1'
 
-gem 'sassc','~>2.1.0'
+gem 'sassc', '~>2.1.0'
 
 group :production do
   gem 'mysql2'

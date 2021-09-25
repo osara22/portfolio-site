@@ -1,6 +1,6 @@
 class Public::QuestionsController < ApplicationController
   # ログインしてなければログインページににリダイレクトする
-  before_action :user_not_signin, {except: [:index, :unsolved, :solved, :show]}
+  before_action :user_not_signin, { except: %i[index unsolved solved show] }
   def index
     @question_solved = Question.where.not(thank: nil).last(4).reverse
     @question_unsolved = Question.where(thank: nil).last(4).reverse
@@ -34,9 +34,7 @@ class Public::QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    if @question.best_answer_id.present?
-      @best_answer = @question.answers.find(@question.best_answer_id)
-    end
+    @best_answer = @question.answers.find(@question.best_answer_id) if @question.best_answer_id.present?
   end
 
   def update
@@ -51,8 +49,8 @@ class Public::QuestionsController < ApplicationController
   def search
     @search_word = params[:search_word]
     if params[:search_word].present?
-      @question_solved = Question.where.not(thank: nil).where("title Like ?", "%" + @search_word + "%")
-      @question_unsolved = Question.where(thank: nil).where("title Like ?", "%" + @search_word + "%")
+      @question_solved = Question.where.not(thank: nil).where('title Like ?', "%#{@search_word}%")
+      @question_unsolved = Question.where(thank: nil).where('title Like ?', "%#{@search_word}%")
     else
       redirect_to questions_path
     end
@@ -77,5 +75,4 @@ class Public::QuestionsController < ApplicationController
   def best_answer_id_present?
     params.require(:question).permit(:best_answer_id).present?
   end
-
 end

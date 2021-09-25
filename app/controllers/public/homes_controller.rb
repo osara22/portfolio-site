@@ -7,7 +7,8 @@ class Public::HomesController < ApplicationController
       @blogs = Blog.tagged_with(params[:tag]).page(params[:page]).per(8)
     elsif params[:search_word]
       @search_word = params[:search_word]
-      @blogs = Blog.where("title Like ?", "%" + @search_word + "%").page(params[:page]).per(8)
+      blogs = Blog.where('title Like ?', "%#{@search_word}%")
+      @blogs = blogs.page(params[:page]).per(8)
     else
       @blogs = Blog.all.page(params[:page]).per(8)
     end

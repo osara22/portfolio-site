@@ -9,7 +9,7 @@ class Admin::BlogsController < ApplicationController
       @blogs = Blog.tagged_with(params[:tag])
     elsif params[:search_word]
       @search_word = params[:search_word]
-      @blogs = Blog.where("title Like ?", "%" + @search_word + "%")
+      @blogs = Blog.where('title Like ?', "%#{@search_word}%")
     else
       @blogs = Blog.all
     end
@@ -47,5 +47,4 @@ class Admin::BlogsController < ApplicationController
   def blog_params
     params.require(:blog).permit(:title, :body, :top_image, :body_image, :video_url, :tag_list, :twitter_url)
   end
-
 end
