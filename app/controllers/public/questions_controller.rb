@@ -1,6 +1,6 @@
 class Public::QuestionsController < ApplicationController
   # ログインしてなければログインページににリダイレクトする
-  before_action :user_not_signin, { except: %i[index unsolved solved show] }
+  before_action :user_not_signin, { except: %i[index unsolved solved show search] }
   def index
     @question_solved = Question.where.not(thank: nil).last(4).reverse
     @question_unsolved = Question.where(thank: nil).last(4).reverse
