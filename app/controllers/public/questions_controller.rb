@@ -15,7 +15,7 @@ class Public::QuestionsController < ApplicationController
   end
 
   def my_question
-    @questions = current_user.questions
+    @questions = current_user.questions.page(params[:page]).per(10)
   end
 
   def new
@@ -41,10 +41,10 @@ class Public::QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    if @question.update(best_answer_params)
+    if @question.update(best_answer_params) && best_answer_id_present?
       redirect_to question_path(@question)
     else
-      render :edit
+      render :best_select
     end
   end
 
@@ -72,4 +72,10 @@ class Public::QuestionsController < ApplicationController
   def best_answer_params
     params.require(:question).permit(:thank, :best_answer_id)
   end
+
+  # ベストアンサー用
+  def best_answer_id_present?
+    params.require(:question).permit(:best_answer_id).present?
+  end
+
 end

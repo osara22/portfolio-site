@@ -3,6 +3,7 @@ class Public::AnswersController < ApplicationController
   before_action :current_user_signin
   def new
     @answer = Answer.new
+    @question = Question.find(params[:id])
   end
 
   def check

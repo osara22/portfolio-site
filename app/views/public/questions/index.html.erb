@@ -22,12 +22,12 @@
     <div class="col">
       <h1 class="border-bottom pb-3">新着未解決</h1>
       <%= render 'layouts/question_list', questions: @question_unsolved %>
-      <%= link_to "未解決のQ&A一覧", unsolved_questions_path , class: 'btn btn-light' %>
+      <%= link_to "未解決のQ&A一覧", unsolved_questions_path , class: 'btn btn-light border' %>
     </div>
     <div class="col">
       <h1 class="border-bottom pb-3">解決済み</h1>
       <%= render 'layouts/question_list', questions: @question_solved %>
-      <%= link_to "解決済みのQ&A一覧", solved_questions_path , class: 'btn btn-light' %>
+      <%= link_to "解決済みのQ&A一覧", solved_questions_path , class: 'btn btn-light border' %>
     </div>
   </div>
 </div>

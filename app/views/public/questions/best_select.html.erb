@@ -1,32 +1,42 @@
 <div class="container">
-  <div class="row">
-    <div class="col-8">
-      <h1>ベストアンサーを選ぶ</h1>
-      <%= form_with model: @question, url:question_path(@question), local:true do |f| %>
-        <table class="table">
-          <tbody>
-            <% @question.answers.each do |answer| %>
-              <tr>
-                <td><%= f.radio_button :best_answer_id, answer.id %></td>
-                <td>
-                  <%= f.label :best_answer_id, value: answer.id do %>
-                    <%= simple_format(answer.body) %>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <div class="row">
-          <div class="col">
-            <h3><%= f.label :thank, "感謝文を入力する" %></h3>
-            <%= f.text_area :thank, cols: 100, rows: 5, placeholder: "入力してください" %>
-            <div>
-              <%= f.button '確認画面へ', type: 'button', onclick: 'submit();', class: "btn btn-success mb-3" %>
-            </div>
-          </div>
-        </div>
+  <div class="row bg-light">
+    <div class="col border rounded">
+      <h1 class="py-3 border-bottom"><%= @question.title %></h1>
+      <%= render 'public/questions/user_data', data: @question %>
+      <p><%= simple_format(@question.body) %></p>
+      <% if @question.image.present? %>
+        <%= attachment_image_tag @question, :image, format: 'jpeg', class:'mb-2', style:'max-width: 100%' %>
       <% end %>
     </div>
+  </div>
+
+  <div class="row bg-light mt-3 border rounded">
+    <%= form_with model: @question, url:question_path(@question), local:true do |f| %>
+      <div class="col">
+        <h1 class="py-3 border-bottom">ベストアンサーを選ぶ</h1>
+        <% @question.answers.each do |answer| %>
+          <div class="row border-bottom">
+            <div class="col-1 p-5">
+              <%= f.radio_button :best_answer_id, answer.id %>
+            </div>
+            <div class="col">
+              <%= render 'public/questions/user_data', data: answer %>
+              <%= f.label :best_answer_id, value: answer.id do %>
+                <%= simple_format(answer.body) %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <h3 class="my-3"><%= f.label :thank, "感謝文を入力する" %></h3>
+        <%= f.text_area :thank, cols: 100, rows: 5, placeholder: "入力してください" %>
+        <div class="row">
+          <div class="col">
+            <%= f.button '新規登録', type: 'button', onclick: 'submit();', class: "btn btn-success my-3" %>
+          </div>
+
+        </div>
+
+      </div>
+    <% end %>
   </div>
 </div>
