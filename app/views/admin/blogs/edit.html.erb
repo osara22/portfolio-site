@@ -1,8 +1,7 @@
-<h1>Adminのブログ編集ページです</h1>
-
 <div class="container">
   <div class="row">
     <div class="col">
+      <h1 class="my-3">Adminのブログ編集ページです</h1>
       <%= form_with model: @blog, url:admin_blog_path(@blog), local:true do |f| %>
         <table class="table">
           <tbody>

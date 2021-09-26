@@ -50,8 +50,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # リーダブルコード用
-  gem 'rubocop', require: false
-  gem 'rubocop-rails'
+  gem 'rubocop-airbnb'
 end
 
 group :test do

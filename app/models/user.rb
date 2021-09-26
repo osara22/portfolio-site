@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :introduction, length: { maximum: 255 }
   validates :name, length: { in: 2..20 }
-  validates :name, :email,  presence: true
+  validates :name, :email, presence: true
 
   attachment :user_image
 end

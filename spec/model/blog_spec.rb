@@ -30,6 +30,7 @@ RSpec.describe 'Blogモデルのテスト', type: :model do
         is_expected.to eq false
       end
     end
+
     context 'top_imageカラム' do
       it '空欄でないこと' do
         blog.top_image_id = ''
@@ -58,6 +59,5 @@ RSpec.describe 'Blogモデルのテスト', type: :model do
         is_expected.to eq true
       end
     end
-
   end
 end

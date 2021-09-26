@@ -6,20 +6,20 @@ class Public::UsersController < ApplicationController
   def favorite_blogs
     @user = User.find(params[:user_id])
     @slide_blogs = Blog.order('impressions_count DESC').take(5)
-    favorites = @user.blog_favorites.where(user_id: @user.id).pluck(:blog_id)
+    favorites = @user.blog_favorites.where(user_id: @user.id).order(created_at: :desc).pluck(:blog_id)
     @blogs = Blog.find(favorites)
     @tags = Blog.tags_on(:tags)
   end
 
   def favorite_questions
     @user = User.find(params[:user_id])
-    favorites = @user.question_favorites.where(user_id: @user.id).pluck(:question_id)
+    favorites = @user.question_favorites.where(user_id: @user.id).order(created_at: :desc).pluck(:question_id)
     @questions = Question.find(favorites)
   end
 
   def questions
     @user = User.find(params[:user_id])
-    @questions = @user.questions.page(params[:page]).per(10)
+    @questions = @user.questions.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit
