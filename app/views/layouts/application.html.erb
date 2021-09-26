@@ -17,7 +17,7 @@
       <p class="bg-info text-center text-light py-1 notice"><%= flash[:notice] %></p>
     <% elsif flash[:alert].present? %>
       <p class="bg-danger text-center text-light py-1 alert"><%= flash[:alert] %></p>
-    <%end%>
+    <% end %>
 
     <% if current_page?(root_path) || request.path.include?("blogs") && !request.path.include?("admin") %>
       <%= render 'layouts/header_blog_slide', slide_blogs: @slide_blogs %>
