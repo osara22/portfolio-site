@@ -2,7 +2,25 @@
   <div class="row">
     <div class="col">
       <h1 class="border-bottom py-3"><%= @user.name %>さんの投稿した質問</h1>
-      <%= render 'layouts/question_list', questions: @questions %>
+      <% @questions.each do |question| %>
+        <div class="row mb-2 border-bottom">
+          <div class="col">
+            <%= link_to question.title, question_path(question), class: 'h4 question-title' %>
+            <p class="text-secondary mb-1">
+              投稿者：<%= question.user.name %>　質問日時：<%= question.created_at.strftime('%Y/%m/%d %H:%M') %>　回答：<%= question.answers.length %>件
+              <% if question.best_answer_id.present? %>
+                解決済み
+              <% end %>
+            </p>
+            <p class="mb-4"><%= question.body.truncate(50) %></p>
+          </div>
+          <% if question.user_id == current_user.id %>
+            <div class="col-2">
+              <%= link_to "消去する", question_path(question), class: "btn btn-lg btn-danger text-center my-3", method: :delete, data: { confirm: '本当に消しますか？' } %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
       <%= paginate @questions %>
     </div>
   </div>

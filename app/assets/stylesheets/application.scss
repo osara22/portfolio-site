@@ -107,7 +107,7 @@ a:hover {
   color: #007bff;
 }
 
-.notice{
+.flash-notice{
   position : absolute;
   top: 123px;
   left: 0;
@@ -117,9 +117,8 @@ a:hover {
   border-radius: 0;
 }
 
-.alert{
+.flash-alert{
   position : absolute;
-  top: 123px;
   left: 0;
   right: 0;
   margin : auto;

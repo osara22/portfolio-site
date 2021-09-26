@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col my-5 border py-5 rounded bg-light ">
       <h2>新規会員登録</h2>
+      <%= render "publics/shared/error_messages", resource: resource %>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "publics/shared/error_messages", resource: resource %>
 
         <div class="field">
           <%= f.label :email, "メールアドレス" %><br />
@@ -11,7 +11,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :name, "ユーザー名" %><br />
+          <%= f.label :name, "ユーザー名（20文字以内）" %><br />
           <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
         </div>
 

@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   # ログインしてないのにアクセスしようとしたときの処理
   def user_not_signin
-    redirect_to new_user_session_path unless user_signed_in? || admin_signed_in?
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   # 自分が作った記事に回答しようとしたときの処理

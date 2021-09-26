@@ -1,6 +1,6 @@
 class Public::QuestionsController < ApplicationController
   # ログインしてなければログインページににリダイレクトする
-  before_action :user_not_signin, { except: %i[index unsolved solved show search] }
+  before_action :user_not_signin, { except: %i(index unsolved solved show search) }
   def index
     @question_solved = Question.where.not(thank: nil).last(4).reverse
     @question_unsolved = Question.where(thank: nil).last(4).reverse
@@ -14,9 +14,9 @@ class Public::QuestionsController < ApplicationController
     @questions = Question.where.not(thank: nil).order(created_at: :desc).page(params[:page]).per(10)
   end
 
-  def my_question
-    @questions = current_user.questions.page(params[:page]).per(10)
-  end
+  # def my_question
+  #   @questions = current_user.questions.page(params[:page]).per(10)
+  # end
 
   def new
     @question = Question.new
@@ -49,6 +49,17 @@ class Public::QuestionsController < ApplicationController
       flash[:alert] = 'ベストアンサーを必ず選択してください'
       @question = Question.find(params[:id])
       render :best_select
+    end
+  end
+
+  def destroy
+    @question = Question.find(params[:id])
+    if @question.user_id == current_user.id
+      @question.destroy
+      flash[:alert] = '質問を消去しました'
+      redirect_to user_questions_path(current_user)
+    else
+      redirect_to questions_path
     end
   end
 

@@ -5,6 +5,7 @@ class Blog < ApplicationRecord
   has_many :blog_favorites, dependent: :destroy
 
   validates :title, :body, :top_image, presence: true
+  validates :title, :video_url, :twitter_url, length: { maximum: 255 }
 
   # 閲覧数カウント機能の追加
   is_impressionable counter_cache: true

@@ -7,7 +7,7 @@ module ApplicationHelper
     options = {
       filter_html: true, # htmlを出力しない
       hard_wrap: true, # マークダウン中の空行をhtmlに置き換える
-      space_after_headers: true # #と文字の間にスペースを要求する
+      space_after_headers: true, # #と文字の間にスペースを要求する
     }
 
     extensions = {
@@ -20,7 +20,7 @@ module ApplicationHelper
       underline: true, # 斜線を入れる (* *)
       highlight: true, # ハイライトを入れる (== ==)
       quote: true, # 引用符を入れる (" ")
-      footnotes: true # 脚注を入れる (^[1])
+      footnotes: true, # 脚注を入れる (^[1])
 
     }
 
