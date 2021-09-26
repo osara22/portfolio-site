@@ -33,7 +33,7 @@ $(function(){
 
     //　無限スクロール
     wrapAround: true,
-
+    
     //　trueでラッパー要素の中で収まるようにスクロールする
     contain: true,
 
