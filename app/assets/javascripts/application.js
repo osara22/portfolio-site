@@ -33,7 +33,7 @@ $(function(){
 
     //　無限スクロール
     wrapAround: true,
-    
+
     //　trueでラッパー要素の中で収まるようにスクロールする
     contain: true,
 
@@ -54,15 +54,15 @@ $(function(){
 
 // noticeの表示に動きを作る
 $(function(){
-  $('.notice').delay(500).slideDown();
+  $('.flash-notice').delay(500).slideDown();
 });
 $(function(){
-  $('.notice').delay(5000).slideUp();
+  $('.flash-notice').delay(5000).slideUp();
 });
 
 $(function(){
-  $('.alert').delay(500).slideDown();
+  $('.flash-alert').delay(500).slideDown();
 });
 $(function(){
-  $('.alert').delay(5000).slideUp();
+  $('.flash-alert').delay(5000).slideUp();
 });
