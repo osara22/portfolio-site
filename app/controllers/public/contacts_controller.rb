@@ -9,6 +9,7 @@ class Public::ContactsController < ApplicationController
       ContactMailer.send_mail(@contact).deliver_now
       redirect_to thank_contacts_path
     else
+      flash.now[:alert] = 'すべての欄を入力してください'
       render :new
     end
   end

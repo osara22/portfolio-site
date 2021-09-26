@@ -1,6 +1,6 @@
 class Public::QuestionsController < ApplicationController
   # ログインしてなければログインページににリダイレクトする
-  before_action :user_not_signin, { except: %i[index unsolved solved show] }
+  before_action :user_not_signin, { except: %i[index unsolved solved show search] }
   def index
     @question_solved = Question.where.not(thank: nil).last(4).reverse
     @question_unsolved = Question.where(thank: nil).last(4).reverse
@@ -26,8 +26,11 @@ class Public::QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     if @question.save
+      flash[:notice] = '投稿に成功しました'
       redirect_to question_path(@question)
     else
+      flash[:alert] = '入力に間違いがあります'
+      @question = Question.new
       render :new
     end
   end
@@ -40,8 +43,11 @@ class Public::QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(best_answer_params) && best_answer_id_present?
+      flash[:notice] = 'ベストアンサーを選択しました'
       redirect_to question_path(@question)
     else
+      flash[:alert] = 'ベストアンサーを必ず選択してください'
+      @question = Question.find(params[:id])
       render :best_select
     end
   end

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col mt-5">
       <h1>お問い合わせフォーム</h1>
       <%= form_for(@contact, url: contacts_path) do |f| %>
         <table class="table">
@@ -11,11 +11,11 @@
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :email, 'メールアドレス' %></td>
-              <td><%= f.text_field :email, size: 100 %></td>
+              <td><%= f.text_field :email, size: 100, class: 'form-control' %></td>
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :message, 'メッセージ' %></td>
-              <td><%= f.text_area :message, cols: 100, rows: 20, placeholder: "入力してください" %></td>
+              <td><%= f.text_area :message, cols: 100, rows: 20, placeholder: "入力してください", class: 'form-control' %></td>
             </tr>
             <tr>
               <td></td>

@@ -106,3 +106,23 @@ a:hover {
 .question-title {
   color: #007bff;
 }
+
+.notice{
+  position : absolute;
+  top: 123px;
+  left: 0;
+  right: 0;
+  margin : auto;
+  z-index: 5;
+  border-radius: 0;
+}
+
+.alert{
+  position : absolute;
+  top: 123px;
+  left: 0;
+  right: 0;
+  margin : auto;
+  z-index: 5;
+  border-radius: 0;
+}
