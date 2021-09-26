@@ -41,6 +41,12 @@ class Admin::BlogsController < ApplicationController
     end
   end
 
+  def destroy
+    @blog = Blog.find(params[:id])
+    @blog.destroy
+    redirect_to admin_blogs_path
+  end
+
   # 投稿データのストロングパラメータ
   private
 

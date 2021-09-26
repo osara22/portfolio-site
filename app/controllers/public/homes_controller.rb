@@ -10,7 +10,7 @@ class Public::HomesController < ApplicationController
       blogs = Blog.where('title Like ?', "%#{@search_word}%")
       @blogs = blogs.page(params[:page]).per(8)
     else
-      @blogs = Blog.all.page(params[:page]).per(8)
+      @blogs = Blog.order(created_at: :desc).page(params[:page]).per(8)
     end
   end
 end

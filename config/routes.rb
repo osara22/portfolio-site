@@ -17,16 +17,16 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :blogs, only:[:index, :new, :create, :edit, :update]
+    resources :blogs, only:[:index, :new, :create, :edit, :update, :destroy]
   end
 
   scope module: :public do
-    resources :questions, only:[:index, :new, :create ,:show, :update] do
+    resources :questions, only:[:index, :new, :create ,:show, :update, :destroy] do
       resource :question_favorites, only: [:create, :destroy]
       collection do
         get 'unsolved'
         get 'solved'
-        get 'my_question'
+        # get 'my_question'
         get 'search'
       end
       member do
