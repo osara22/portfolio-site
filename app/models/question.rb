@@ -4,6 +4,7 @@ class Question < ApplicationRecord
   has_many :question_favorites, dependent: :destroy
 
   validates :title, :body, presence: true
+  validates :title, length: { maximum: 255 }
 
   attachment :image
 

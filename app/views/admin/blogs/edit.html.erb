@@ -8,7 +8,7 @@
           <tbody>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :title, "ブログタイトル" %></td>
-              <td><%= f.text_field :title, size: 100, placeholder: "タイトル名" %></td>
+              <td><%= f.text_field :title, size: 100, maxlength: 255, placeholder: "タイトル名" %></td>
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :top_image, "TOPイメージ" %></td>
@@ -20,11 +20,11 @@
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :video_url, "youtube動画のURL(秒数抜き)" %></td>
-              <td><%= f.text_field :video_url, size: 100, placeholder: "(例)https://youtu.be/〇〇〇〇〇〇" %></td>
+              <td><%= f.text_field :video_url, size: 100, maxlength: 255, placeholder: "(例)https://youtu.be/〇〇〇〇〇〇" %></td>
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :twitter_url, "twitterのURL" %></td>
-              <td><%= f.text_field :twitter_url, size: 100, placeholder: "(例)https://twitter.com/〇〇〇〇〇〇" %></td>
+              <td><%= f.text_field :twitter_url, size: 100, maxlength: 255, placeholder: "(例)https://twitter.com/〇〇〇〇〇〇" %></td>
             </tr>
             <tr class="mb-3">
               <td class="text-center"><%= f.label :body_image, "BODYイメージ" %></td>
