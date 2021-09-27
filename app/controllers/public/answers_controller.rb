@@ -1,6 +1,10 @@
 class Public::AnswersController < ApplicationController
   # ログインユーザーの記事に回答しようとしたらroot_pathにリダイレクトする
   before_action :current_user_signin
+  # ベストアンサーすでに選ばれていたらもとに記事にリダイレクトする
+  before_action :already_best_answer_selected
+
+
   def new
     @answer = Answer.new
     @question = Question.find(params[:id])
