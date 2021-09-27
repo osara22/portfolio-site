@@ -4,7 +4,6 @@ class Public::AnswersController < ApplicationController
   # ベストアンサーすでに選ばれていたらもとに記事にリダイレクトする
   before_action :already_best_answer_selected
 
-
   def new
     @answer = Answer.new
     @question = Question.find(params[:id])
