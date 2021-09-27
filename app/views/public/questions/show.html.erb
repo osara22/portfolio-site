@@ -55,7 +55,7 @@
           <div class="row border-bottom">
             <div class="col">
               <%= render 'public/questions/user_data', data: answer %>
-              <p class="my-3"><%= answer.body %></p>
+              <p class="my-3"><%= simple_format(answer.body) %></p>
             </div>
           </div>
         <% end %>
