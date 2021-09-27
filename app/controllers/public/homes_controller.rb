@@ -1,7 +1,7 @@
 class Public::HomesController < ApplicationController
   def top
     @slide_blogs = Blog.order('impressions_count DESC').take(5)
-    @tags = Blog.tags_on(:tags)
+    @tags = Blog.tags_on(:tags).most_used
     if params[:tag]
       @tag = params[:tag]
       @blogs = Blog.tagged_with(params[:tag]).page(params[:page]).per(8)

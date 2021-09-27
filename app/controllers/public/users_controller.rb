@@ -8,7 +8,7 @@ class Public::UsersController < ApplicationController
     @slide_blogs = Blog.order('impressions_count DESC').take(5)
     favorites = @user.blog_favorites.where(user_id: @user.id).order(created_at: :desc).pluck(:blog_id)
     @blogs = Blog.find(favorites)
-    @tags = Blog.tags_on(:tags)
+    @tags = Blog.tags_on(:tags).most_used
   end
 
   def favorite_questions
