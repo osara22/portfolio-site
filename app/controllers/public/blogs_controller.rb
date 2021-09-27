@@ -4,7 +4,7 @@ class Public::BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     @blog_comment = BlogComment.new
     @blog_tags = Blog.find(params[:id]).tag_counts_on(:tags)
-    @tags = Blog.tags_on(:tags)
+    @tags = Blog.tags_on(:tags).most_used
     impressionist(@blog, nil, unique: [:request_hash])
   end
 end
