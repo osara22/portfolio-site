@@ -37,4 +37,9 @@ class ApplicationController < ActionController::Base
   def current_user_signin
     redirect_to root_path if current_user.id == Question.find(params[:id]).user_id
   end
+
+  # すでにベストアンサーが選択されていた時の処理
+  def already_best_answer_selected
+    redirect_to question_path(Question.find(params[:id])) if Question.find(params[:id]).best_answer_id.present?
+  end
 end
