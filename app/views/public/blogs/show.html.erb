@@ -33,8 +33,14 @@
       </div>
       <div class="blog-body">
         <p><%= markdown(@blog.body) %></p>
-        <%= render 'layouts/youtube', blog: @blog %>
-        <%= render 'layouts/twitter', blog: @blog %>
+        <% if @blog.twitter_url.present? %>
+          <blockquote class="twitter-tweet">
+          <a href="<%= @blog.twitter_url %>"></a></blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <% end %>
+        <% if @blog.video_url.present? %>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @blog.split_id_from_youtube_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <% end %>
         <%= attachment_image_tag @blog, :body_image, style: 'width: 100%' %>
       </div>
       <% if user_signed_in? %>
