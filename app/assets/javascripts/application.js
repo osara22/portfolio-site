@@ -66,3 +66,7 @@ $(function(){
 $(function(){
   $('.flash-alert').delay(5000).slideUp();
 });
+
+$(document).ready(function() {
+  $('.drawer').drawer();
+});
