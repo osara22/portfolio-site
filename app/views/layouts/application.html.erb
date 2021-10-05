@@ -5,34 +5,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- drawer.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
-    <!-- jquery & iScroll -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
-    <!-- drawer.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-
   </head>
 
-  <body class="drawer drawer--left">
-    <header role="banner">
-      <button type="button" class="drawer-toggle drawer-hamburger">
-        <span class="sr-only">toggle navigation</span>
-        <span class="drawer-hamburger-icon"></span>
-      </button>
-      <nav class="drawer-nav" role="navigation">
-        <ul class="drawer-menu">
-          <li><a class="drawer-brand" href="#">Brand</a></li>
-          <li><a class="drawer-menu-item" href="#">Nav1</a></li>
-          <li><a class="drawer-menu-item" href="#">Nav2</a></li>
-        </ul>
-      </nav>
-    </header>
+  <body>
     <%= render 'layouts/header' %>
-
 
     <!--フラッシュメッセージ-->
     <% if flash[:notice].present? %>
@@ -45,7 +23,7 @@
       <%= render 'layouts/header_blog_slide', slide_blogs: @slide_blogs %>
     <% end %>
 
-    <main role="main">
+    <main>
       <%= yield %>
     </main>
 
