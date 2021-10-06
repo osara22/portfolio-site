@@ -10,7 +10,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-            <p class="text-white m-auto pr-3">ようこそ！<%= current_user.name %> さん</p>
+            <p class="text-white m-auto pr-3">ようこそ！<%= link_to current_user.name , user_path(current_user), class: 'text-white' %> さん</p>
             <%= link_to "マイページ", user_path(current_user), class: 'btn btn-light mr-3' %>
             <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-light mr-3' %>
           <% elsif admin_signed_in? %>
