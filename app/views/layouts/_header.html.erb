@@ -4,18 +4,21 @@
       <a class="navbar-brand" href="/">
         <h1>3DCGbeginners</h1>
       </a>
-      <div class="collapse navbar-collapse">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-            <p class="text-white m-auto pr-3">ようこそ！<%= current_user.name %> さん</p>
+            <p class="text-white m-auto pr-3">ようこそ！<%= link_to current_user.name , user_path(current_user), class: 'text-white' %> さん</p>
             <%= link_to "マイページ", user_path(current_user), class: 'btn btn-light mr-3' %>
             <%= link_to " ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-light mr-3' %>
           <% elsif admin_signed_in? %>
             <%= link_to "管理者Top", admin_path, class: 'btn btn-light mr-3' %>
             <%= link_to " ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-light mr-3' %>
           <% else %>
-            <%= link_to " 会員新規登録", new_user_registration_path, class: 'btn btn-light mr-3' %>
-            <%= link_to " 会員ログイン", new_user_session_path, class: 'btn btn-light mr-3' %>
+            <%= link_to " 会員新規登録", new_user_registration_path, class: 'btn btn-light m-2' %>
+            <%= link_to " 会員ログイン", new_user_session_path, class: 'btn btn-light m-2' %>
           <% end %>
           <%= render 'layouts/search' %>
         </ul>
