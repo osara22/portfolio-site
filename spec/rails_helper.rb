@@ -61,7 +61,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  #FactoryBot
   config.include FactoryBot::Syntax::Methods
+
   # capybara
   config.before(:each, type: :system) do
     driven_by :rack_test
@@ -70,4 +73,7 @@ RSpec.configure do |config|
   config.before(:each, type: :system, js: true) do
     driven_by :selenium_chrome_headless
   end
+
+  # helper
+  Dir[Rails.root.join("spec/support/*.rb")].each { |f| require f }
 end
