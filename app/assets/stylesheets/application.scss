@@ -125,3 +125,10 @@ a:hover {
   z-index: 5;
   border-radius: 0;
 }
+
+@media screen and (max-width: 959px) {
+	.gallery-cell {
+    width: 100%;
+    position: relative;
+  }
+}
