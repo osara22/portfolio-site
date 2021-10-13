@@ -8,7 +8,7 @@ RSpec.describe 'Answerモデルのテスト', type: :model do
 
     let!(:user) { create(:user) }
     let!(:question) { build(:question, user_id: user.id) }
-    let(:answer) { build(:answer, user_id: user.id, question_id: question.id) }
+    let!(:answer) { build(:answer, user_id: user.id, question_id: question.id) }
 
     context 'bodyカラム' do
       it '空欄でないこと' do

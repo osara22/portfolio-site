@@ -74,6 +74,11 @@ RSpec.configure do |config|
     driven_by :selenium_chrome_headless
   end
 
+  #Devise
+  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
   # helper
   Dir[Rails.root.join("spec/support/*.rb")].each { |f| require f }
 end
