@@ -34,7 +34,7 @@
               <td><%= f.text_field :tag_list, value: @blog.tag_list.join(','), size: 30, placeholder: "( , )で区切ると複数タグを登録できます" %></td>
             </tr>
             <tr>
-              <td><%= f.button '編集を保存する', type: 'button', onclick: 'submit();', class: "btn btn-success mb-3" %></td>
+              <td><%= f.submit '編集を保存する', class: "btn btn-success mt-3" %></td>
             </tr>
           </tbody>
         </table>
