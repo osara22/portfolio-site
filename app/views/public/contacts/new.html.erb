@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col mt-5">
       <h1>お問い合わせフォーム</h1>
-      <%= form_for(@contact, url: contacts_path) do |f| %>
+      <%= form_with model: @contact, url: confirm_contacts_path, local:true do |f| %>
         <table class="table">
           <tbody>
             <tr class="mb-3">
