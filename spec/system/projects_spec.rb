@@ -39,6 +39,7 @@ RSpec.describe "Admin" do
 
       click_button 'ログイン'
       # after login succeeds
+
       expect(current_path).to eq root_path
     end
   end

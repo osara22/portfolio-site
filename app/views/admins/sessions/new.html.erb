@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row">
-   error: <%=  resource.errors.any?  %>
     <div class="col my-5 border py-5 rounded bg-light">
       <h2>管理者ログイン</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -19,7 +18,7 @@
           </div>
         <% end %>
         <div class="actions">
-          <%= f.button 'ログイン', type: 'button', onclick: 'submit();', class: "btn btn-success mt-3", id: "admin_login" %>
+          <%= f.submit 'ログイン', class: "btn btn-success mt-3" %>
         </div>
       <% end %>
     </div>
