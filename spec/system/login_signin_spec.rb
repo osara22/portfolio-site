@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'system_supportの動作確認', type: :system do
+describe 'loginとsigninの動作確認', type: :system do
 
   describe 'user新規登録の動作確認' do
     before do
@@ -28,9 +28,9 @@ describe 'system_supportの動作確認', type: :system do
       end
     end
 
-   before do
-     visit new_user_registration_path
-   end
+    before do
+      visit new_user_registration_path
+    end
     context 'sign_up成功の確認' do
       it 'sign_up後のリダイレクト先が、user詳細ページになっている' do
         fill_in 'user[email]', with:  'abcd@example.com'
