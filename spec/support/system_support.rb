@@ -24,4 +24,18 @@ module SystemSupport
     fill_in 'blog_tag_list', with: blog_tags
     click_on '新規登録'
   end
+
+  def upload_question(question)
+    visit new_question_path
+    fill_in 'question[title]', with: question.title
+    fill_in 'question[body]', with: question.body
+    attach_file 'question[image]', "#{Rails.root}/app/assets/images/default_cube.jpg"
+    click_on '新規登録'
+  end
+
+  def upload_answer(answer)
+    visit '/questions/' + Question.last.id.to_s + '/answers/new'
+    fill_in 'answer[body]', with: answer.body
+    click_on '新規登録'
+  end
 end

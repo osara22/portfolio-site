@@ -6,6 +6,8 @@ describe 'adminのblog機能の動作確認', type: :system do
     admin = create(:admin)
     login_admin(admin)
   end
+  # 投稿に使うデータの作成
+  let(:blog) { build(:blog) }
 
   describe '投稿機能の動作確認' do
     context 'トップページのボタンから投稿画面に行けるか' do
@@ -54,7 +56,6 @@ describe 'adminのblog機能の動作確認', type: :system do
       before do
         upload_blog(blog, 'テスト,test')
       end
-      let(:blog) { build(:blog) }
 
       it '投稿後のリダイレクト先がブログ詳細ページになっている' do
         expect(current_path).to eq '/blogs/' + Blog.last.id.to_s
@@ -85,7 +86,6 @@ describe 'adminのblog機能の動作確認', type: :system do
     before do
       upload_blog(blog, 'テスト,test')
     end
-    let(:blog) { build(:blog) }
 
     context '一覧画面から編集画面に行けるか' do
       before do

@@ -10,7 +10,7 @@
       <%= render 'public/questions/user_data', data: @question %>
       <p><%= simple_format(@question.body) %></p>
       <% if @question.image.present? %>
-        <%= attachment_image_tag @question, :image, format: 'jpeg', class:'mb-2', style:'max-width: 100%' %>
+        <%= attachment_image_tag @question, :image, format: 'jpg', class:'mb-2', style:'max-width: 100%' %>
       <% end %>
       <% if user_signed_in? %>
         <div id="question-favorite-<%= @question.id %>">
