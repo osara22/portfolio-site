@@ -2,9 +2,9 @@ require 'rails_helper'
 include SystemSupport
 
 describe 'system_supportの動作確認', type: :system do
-
   context 'userログインの動作確認(login_userメソッド)' do
     let(:user) { create(:user) }
+
     it 'sign_in後のリダイレクト先が、ユーザー詳細ページになっている' do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
@@ -17,6 +17,7 @@ describe 'system_supportの動作確認', type: :system do
 
   context 'adminログインの動作確認(login_adminメソッド)' do
     let(:admin) { create(:admin) }
+
     it 'sign_in後のリダイレクト先が、adminのトップページになっている' do
       visit new_admin_session_path
       fill_in 'admin[email]', with: admin.email
@@ -29,6 +30,7 @@ describe 'system_supportの動作確認', type: :system do
 
   context 'blog投稿の動作確認(upload_blogメソッド)' do
     let(:blog) { build(:blog) }
+
     before do
       admin = create(:admin)
       login_admin(admin)
@@ -52,6 +54,7 @@ describe 'system_supportの動作確認', type: :system do
 
   context 'question投稿の動作確認(upload_questionメソッド)' do
     let(:question) { build(:question) }
+
     before do
       user = create(:user)
       login_user(user)
@@ -73,6 +76,7 @@ describe 'system_supportの動作確認', type: :system do
   context 'answer投稿の動作確認(upload_answerメソッド)' do
     let(:question) { build(:question) }
     let(:answer) { build(:answer) }
+
     before do
       user_question = create(:user)
       user_answer = create(:user)
@@ -90,6 +94,4 @@ describe 'system_supportの動作確認', type: :system do
       expect(page).to have_content answer.body
     end
   end
-
-
 end

@@ -7,6 +7,10 @@ describe 'loginとsigninの動作確認', type: :system do
       visit new_user_registration_path
     end
 
+    before do
+      visit new_user_registration_path
+    end
+
     context '表示内容の確認' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_up'
@@ -28,12 +32,9 @@ describe 'loginとsigninの動作確認', type: :system do
       end
     end
 
-    before do
-      visit new_user_registration_path
-    end
     context 'sign_up成功の確認' do
       it 'sign_up後のリダイレクト先が、user詳細ページになっている' do
-        fill_in 'user[email]', with:  'abcd@example.com'
+        fill_in 'user[email]', with: 'abcd@example.com'
         fill_in 'user[name]', with: 'namaee'
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
