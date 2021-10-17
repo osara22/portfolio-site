@@ -7,6 +7,7 @@ describe 'adminのblog機能の動作確認', type: :system do
     login_admin(admin)
   end
   # 投稿に使うデータの作成
+
   let(:blog) { build(:blog) }
 
   describe '投稿機能の動作確認' do
@@ -96,14 +97,14 @@ describe 'adminのblog機能の動作確認', type: :system do
         expect(page).to have_link blog.title
       end
       it '編集ボタンからの遷移先が正しいか' do
-        click_link '編集', href: "/admin/blogs/#{Blog.last.id.to_s}/edit"
-        expect(current_path).to eq "/admin/blogs/#{Blog.last.id.to_s}/edit"
+        click_link '編集', href: "/admin/blogs/#{Blog.last.id}/edit"
+        expect(current_path).to eq "/admin/blogs/#{Blog.last.id}/edit"
       end
     end
 
     context '編集画面の表示内容の確認' do
       before do
-        visit "/admin/blogs/#{Blog.last.id.to_s}/edit"
+        visit "/admin/blogs/#{Blog.last.id}/edit"
       end
 
       it 'titleフォームが表示される' do
@@ -134,7 +135,7 @@ describe 'adminのblog機能の動作確認', type: :system do
 
     context '情報の反映確認' do
       before do
-        visit "/admin/blogs/#{Blog.last.id.to_s}/edit"
+        visit "/admin/blogs/#{Blog.last.id}/edit"
       end
 
       it '編集した情報が登録されているか' do

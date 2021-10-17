@@ -42,8 +42,8 @@ describe 'Q&A機能の動作確認', type: :system do
         expect(page).to have_selector("img[src$='image.jpg']")
       end
       it '表示してはいけないデータが表示されていないか' do
-        expect(page).to_not have_button '回答する'
-        expect(page).to_not have_button 'ベストアンサーを選ぶ'
+        expect(page).not_to have_button '回答する'
+        expect(page).not_to have_button 'ベストアンサーを選ぶ'
       end
     end
   end
@@ -82,8 +82,8 @@ describe 'Q&A機能の動作確認', type: :system do
         expect(page).to have_content answer.body
       end
       it '表示してはいけないデータが表示されていないか' do
-        expect(page).to_not have_button '回答する'
-        expect(page).to_not have_button 'ベストアンサーを選ぶ'
+        expect(page).not_to have_button '回答する'
+        expect(page).not_to have_button 'ベストアンサーを選ぶ'
       end
     end
   end
@@ -129,8 +129,8 @@ describe 'Q&A機能の動作確認', type: :system do
         expect(page).to have_content 'thanks'
       end
       it '表示してはいけないデータが表示されていないか' do
-        expect(page).to_not have_button '回答する'
-        expect(page).to_not have_button 'ベストアンサーを選ぶ'
+        expect(page).not_to have_button '回答する'
+        expect(page).not_to have_button 'ベストアンサーを選ぶ'
       end
     end
   end
