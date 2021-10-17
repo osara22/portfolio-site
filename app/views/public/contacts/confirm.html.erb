@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-5">
+      <h1>お問い合わせ確認フォーム</h1>
+      <table class="table">
+        <tbody>
+          <tr class="mb-3">
+            <td class="text-center contact-form-title">お名前</td>
+            <td><%= @contact.name %></td>
+          </tr>
+          <tr class="mb-3">
+            <td class="text-center contact-form-title">メールアドレス</td>
+            <td><%= @contact.email %></td>
+          </tr>
+          <tr class="mb-3">
+            <td class="text-center  contact-form-title">メッセージ</td>
+            <td><%= simple_format(@contact.message) %></td>
+          </tr>
+          <tr class="mb-3">
+            <td></td>
+            <td>
+              <%= form_with model: @contact, url: contacts_path, local:true do |f| %>
+                <%= f.hidden_field :name %>
+                <%= f.hidden_field :email %>
+                <%= f.hidden_field :message %>
+                <%= f.submit '送信する', class: "btn btn-success mt-3" %>
+              <% end %>
+              <%= form_with model: @contact, url: back_contacts_path, local:true do |f| %>
+                <%= f.hidden_field :name %>
+                <%= f.hidden_field :email %>
+                <%= f.hidden_field :message %>
+                <%= f.submit '入力画面に戻る', class: "btn btn-success mt-3" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

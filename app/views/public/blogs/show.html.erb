@@ -41,7 +41,7 @@
         <% if @blog.video_url.present? %>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @blog.split_id_from_youtube_url %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <% end %>
-        <%= attachment_image_tag @blog, :body_image, style: 'width: 100%' %>
+        <%= attachment_image_tag @blog, :body_image, format: 'jpg',style: 'width: 100%' %>
       </div>
       <% if user_signed_in? %>
         <div id="blog-favorite-<%= @blog.id %>">

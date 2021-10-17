@@ -47,7 +47,9 @@ $(function(){
     pageDots: false,
 
     // trueで3秒間隔で自動スクロール。
-    autoPlay: true
+    autoPlay: true,
+
+    resize: true
 
   });
 });

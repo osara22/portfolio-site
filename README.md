@@ -34,6 +34,7 @@
   - [Admin](https://drive.google.com/file/d/1gAHWLRRcV2AtNEknCtI-OZC9kKT5ATnX/view?usp=sharing)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1XW5yC0PFBmDAu074LPB7FJQHV0s242sRNZ1JJtmFBUo/edit?usp=sharing)
 - [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1iAW1Tyc3nCKNrcMuvrBqSmqN2YVBKPVbHEBltnKUPFE/edit?usp=sharing)
+- [テスト項目書](https://docs.google.com/spreadsheets/d/1pJ5WULkbkQykcX57Dol9K9HVqkJn8DrK5KQaiVGHg2E/edit?usp=sharing)
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/14CsJhx5bvTOkeIpyNmPtHKnrk3Z3J2I4vLUPRLNEgic/edit?usp=sharing

@@ -33,7 +33,7 @@ Rails.application.routes.draw do
         # ベストアンサーを選ぶ画面
         get 'best_select' => 'questions#best_select'
         resources :answers, only:[:new, :create] do
-          post 'check'
+          # post 'check'
         end
       end
     end
@@ -44,6 +44,8 @@ Rails.application.routes.draw do
     end
 
     resource :contacts, only: [:new, :create] do
+      post 'confirm'
+      post 'back'
       get 'thank'
     end
 
