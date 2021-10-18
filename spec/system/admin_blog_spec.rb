@@ -1,5 +1,4 @@
 require 'rails_helper'
-include SystemSupport
 
 describe 'adminのblog機能の動作確認', type: :system do
   before do

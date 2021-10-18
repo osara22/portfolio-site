@@ -1,12 +1,7 @@
 require 'rails_helper'
-include SystemSupport
 
 describe 'loginとsigninの動作確認', type: :system do
   describe 'user新規登録の動作確認' do
-    before do
-      visit new_user_registration_path
-    end
-
     before do
       visit new_user_registration_path
     end

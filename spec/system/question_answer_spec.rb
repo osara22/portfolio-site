@@ -1,5 +1,4 @@
 require 'rails_helper'
-include SystemSupport
 
 describe 'Q&A機能の動作確認', type: :system do
   # テストに使うデータの作成
