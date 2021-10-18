@@ -51,6 +51,9 @@ group :development do
 
   # リーダブルコード用
   gem 'rubocop-airbnb'
+  
+  # N+1問題解決用
+  gem 'bullet'
 end
 
 group :test do

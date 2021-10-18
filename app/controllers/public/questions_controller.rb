@@ -2,21 +2,17 @@ class Public::QuestionsController < ApplicationController
   # ログインしてなければログインページににリダイレクトする
   before_action :user_not_signin, { except: %i(index unsolved solved show search) }
   def index
-    @question_solved = Question.where.not(thank: nil).last(4).reverse
-    @question_unsolved = Question.where(thank: nil).last(4).reverse
+    @question_solved = Question.where.not(thank: nil).order(created_at: :desc).includes(:user, :answers).first(4)
+    @question_unsolved = Question.where(thank: nil).order(created_at: :desc).includes(:user, :answers).first(4)
   end
 
   def unsolved
-    @questions = Question.where(thank: nil).order(created_at: :desc).page(params[:page]).per(10)
+    @questions = Question.where(thank: nil).order(created_at: :desc).includes(:user, :answers).page(params[:page]).per(10)
   end
 
   def solved
-    @questions = Question.where.not(thank: nil).order(created_at: :desc).page(params[:page]).per(10)
+    @questions = Question.where.not(thank: nil).order(created_at: :desc).includes(:user, :answers).page(params[:page]).per(10)
   end
-
-  # def my_question
-  #   @questions = current_user.questions.page(params[:page]).per(10)
-  # end
 
   def new
     @question = Question.new
@@ -66,8 +62,8 @@ class Public::QuestionsController < ApplicationController
   def search
     @search_word = params[:search_word]
     if params[:search_word].present?
-      @question_solved = Question.where.not(thank: nil).where('title Like ?', "%#{@search_word}%")
-      @question_unsolved = Question.where(thank: nil).where('title Like ?', "%#{@search_word}%")
+      @question_solved = Question.where.not(thank: nil).where('title Like ?', "%#{@search_word}%").includes(:user, :answers)
+      @question_unsolved = Question.where(thank: nil).where('title Like ?', "%#{@search_word}%").includes(:user, :answers)
     else
       redirect_to questions_path
     end
