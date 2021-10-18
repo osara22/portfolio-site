@@ -4,16 +4,15 @@ Rails.application.routes.draw do
   get 'admin' => 'admin/homes#top'
 
   # UserとAdminのログインページ
-  devise_for :admins, controllers: {
-    sessions: 'admins/sessions',
-    passwords: 'admins/passwords',
-    registrations: 'admins/registrations'
+
+
+  devise_for :admins, only: [:session], controllers: {
+    sessions: 'admins/sessions'
   }
-  devise_for :users, controllers: {
+
+  devise_for :users, only: [:session, :registration], controllers: {
     registrations: "publics/registrations",
-    sessions: "publics/sessions",
-    passwords: "publics/passwords",
-    ragistrations: "publics/registrations"
+    sessions: "publics/sessions"
   }
 
   namespace :admin do

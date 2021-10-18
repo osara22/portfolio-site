@@ -7,8 +7,8 @@ RSpec.describe 'Answerモデルのテスト', type: :model do
     subject { answer.valid? }
 
     let!(:user) { create(:user) }
-    let!(:question) { build(:question, user_id: user.id) }
-    let!(:answer) { build(:answer, user_id: user.id, question_id: question.id) }
+    let!(:question) { create(:question, user_id: user.id) }
+    let!(:answer) { create(:answer, user_id: user.id, question_id: question.id) }
 
     context 'bodyカラム' do
       it '空欄でないこと' do

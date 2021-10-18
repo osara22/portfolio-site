@@ -7,7 +7,7 @@ RSpec.describe 'Questionモデルのテスト', type: :model do
     subject { question.valid? }
 
     let!(:user) { create(:user) }
-    let(:question) { build(:question, user_id: user.id) }
+    let!(:question) { create(:question, user_id: user.id) }
 
     context 'titleカラム' do
       it '空欄でないこと' do

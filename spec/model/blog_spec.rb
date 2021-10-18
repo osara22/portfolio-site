@@ -7,7 +7,6 @@ RSpec.describe 'Blogモデルのテスト', type: :model do
     subject { blog.valid? }
 
     let!(:blog) { create(:blog) }
-    let(:blog) { build(:blog) }
 
     context 'titleカラム' do
       it '空欄でないこと' do

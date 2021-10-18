@@ -69,7 +69,7 @@ describe 'loginとsigninの動作確認', type: :system do
     context 'ログインの動作確認(login_userメソッド)' do
       let(:user) { create(:user) }
 
-      it 'sign_in後のリダイレクト先が、ユーザー詳細ページになっている' do
+      it 'sign_in後のリダイレクト先が、user詳細ページになっている' do
         login_user(user)
         expect(current_path).to eq '/users/' + User.last.id.to_s
       end

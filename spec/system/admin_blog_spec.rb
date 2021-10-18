@@ -77,6 +77,9 @@ describe 'adminのblog機能の動作確認', type: :system do
       it '投稿したbody_imageが表示されているか' do
         expect(page).to have_selector("img[src$='body_image.jpg']")
       end
+      it '投稿したvideoが表示されているか' do
+        expect(page).to have_selector("iframe[src$='https://www.youtube.com/embed/WJzSBLCaKc8']")
+      end
       it '投稿したtwitterが表示されているか' do
         expect(page).to have_link href: 'https://twitter.com/hikakin/status/1448923886037336064'
       end
