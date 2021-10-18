@@ -65,4 +65,5 @@ RSpec.configure do |config|
 
   # helper
   Dir[Rails.root.join("spec/support/*.rb")].each { |f| require f }
+  config.include SystemSupport, type: :system
 end

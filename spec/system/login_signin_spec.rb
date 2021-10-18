@@ -1,12 +1,7 @@
 require 'rails_helper'
-include SystemSupport
 
 describe 'loginとsigninの動作確認', type: :system do
   describe 'user新規登録の動作確認' do
-    before do
-      visit new_user_registration_path
-    end
-
     before do
       visit new_user_registration_path
     end
@@ -69,7 +64,7 @@ describe 'loginとsigninの動作確認', type: :system do
     context 'ログインの動作確認(login_userメソッド)' do
       let(:user) { create(:user) }
 
-      it 'sign_in後のリダイレクト先が、ユーザー詳細ページになっている' do
+      it 'sign_in後のリダイレクト先が、user詳細ページになっている' do
         login_user(user)
         expect(current_path).to eq '/users/' + User.last.id.to_s
       end

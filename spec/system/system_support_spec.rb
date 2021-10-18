@@ -1,5 +1,4 @@
 require 'rails_helper'
-include SystemSupport
 
 describe 'system_supportの動作確認', type: :system do
   context 'userログインの動作確認(login_userメソッド)' do

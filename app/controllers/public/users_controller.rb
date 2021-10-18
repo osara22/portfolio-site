@@ -14,12 +14,12 @@ class Public::UsersController < ApplicationController
   def favorite_questions
     @user = User.find(params[:user_id])
     favorites = @user.question_favorites.where(user_id: @user.id).order(created_at: :desc).pluck(:question_id)
-    @questions = Question.find(favorites)
+    @questions = Question.includes(:user, :answers).find(favorites)
   end
 
   def questions
     @user = User.find(params[:user_id])
-    @questions = @user.questions.order(created_at: :desc).page(params[:page]).per(10)
+    @questions = @user.questions.order(created_at: :desc).includes(:answers).page(params[:page]).per(10)
   end
 
   def edit
